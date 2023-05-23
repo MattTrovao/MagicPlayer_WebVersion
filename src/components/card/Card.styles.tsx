@@ -101,12 +101,13 @@ export const RuleList = styled.div`
 export const RuleInfo = styled.div`
   display: flex;
   justify-content: space-between;
-  background: ${props => props.theme.COLORS.SECONDARY};
+  background: ${props => props.theme.COLORS.PRIMARY};
   border-radius: inherit;
   padding: 5px 5px;
 
 & > p {
   font-weight: bold;
+  color: ${props => props.theme.COLORS.WHITE};
 }
 `
 

@@ -47,8 +47,8 @@ interface CardResult {
   color_identity: string[],
   rulings_uri: URL,
   power: number,
-toughness: number,
-loyalty: number,
+  toughness: number,
+  loyalty: number,
 }
 
 interface CardRuleData {
@@ -126,24 +126,28 @@ export function Card() {
               <NameContainer>
                 <h2>{result.name}</h2>
 
-                <h2>{result.mana_cost.replace(/{/g, "").replace(/}/g, " ")}</h2>
+                {result?.mana_cost && (
+                  <h2>{result.mana_cost.replace(/{/g, "").replace(/}/g, " ")}</h2>
+                )}
               </NameContainer>
 
-              <ResultImg src={result.image_uris.art_crop} />
+              {result.image_uris &&(
+                <ResultImg src={result.image_uris.art_crop} />
+              )}
 
               <RuleInfo>
-              <RuleText>
-                {result.type_line}
-              </RuleText>
+                <RuleText>
+                  {result.type_line}
+                </RuleText>
 
-              <RuleText>
-              {
-                result.power ?
-                 result.power + '/' + result.toughness 
-                : result.loyalty ? result.loyalty
-                 : ''
-              }
-              </RuleText>
+                <RuleText>
+                  {
+                    result.power ?
+                      result.power + '/' + result.toughness
+                      : result.loyalty ? result.loyalty
+                        : ''
+                  }
+                </RuleText>
               </RuleInfo>
 
               {rules && rules.data.length > 0 ? (
