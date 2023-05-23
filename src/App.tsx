@@ -1,20 +1,13 @@
 import { ThemeProvider } from 'styled-components'
 import theme from './theme'
-import { Container } from './components/global/Container'
 import { GlobalCSS } from './styles/global'
-import { Player } from './components/player'
-import { GP } from './components/global/GamePlayers'
+import { Card } from './components/card'
 
 
 function App() {
   return (
     <ThemeProvider theme={theme}>
-      <Container>
-        <GP>
-          <Player />
-          <Player />
-        </GP>
-      </Container>
+      <Card />
 
       <GlobalCSS />
     </ThemeProvider>

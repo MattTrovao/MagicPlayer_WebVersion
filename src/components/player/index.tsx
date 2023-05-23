@@ -1,5 +1,5 @@
 import { PlayerFrame, PlayerBox, PlayerName, PlayerLife, Life } from "./Player.style"
-import { Id } from "./components/ColorId"
+import { Id } from "../ColorId/"
 import { Markers } from "./components/Markers"
 
 

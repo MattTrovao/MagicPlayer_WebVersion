@@ -1,13 +1,19 @@
 import styled, { css } from "styled-components";
 
 // Shared Styles
-
 export const shareTransition = css`
   transition: .4s all ease-in-out;
 
-  &:hover{
+  &:not(:disabled):hover{
     filter: brightness(1.2);
   }
+`
+
+export const shareDisabled = css`
+ &:disabled{
+  opacity: .5;
+  cursor: not-allowed;
+ }
 `
 
 // Container
@@ -58,4 +64,12 @@ export const GamePlayers = styled.section`
   & > * {
     flex: 1 auto;
   }
+`
+
+// Label
+export const LabelTxt = styled.label`
+  color: ${props => props.theme.COLORS.WHITE};
+  font-size: ${props => props.theme.TEXT_SIZE.SM};
+  margin: 10px 0;
+  display: inline-block
 `

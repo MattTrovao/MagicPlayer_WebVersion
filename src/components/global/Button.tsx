@@ -4,6 +4,13 @@ interface BtnProps{
   variant?: Variants,
 }
 
-export function Button({variant = 'neutral'}: BtnProps){
-  return <BtnContainer variant={variant}>Txt</BtnContainer>
+export function Button(
+  { variant = 'neutral' }: BtnProps,
+  { children }: any
+){
+  return (
+    <BtnContainer variant={variant}>
+      {children}
+    </BtnContainer>
+  )
 }

@@ -13,4 +13,10 @@ export const GlobalCSS = createGlobalStyle`
     background-color: ${props => props.theme.COLORS.BLACK};
   }
 
+  #root {
+    display: flex;
+    flex-direction: column;
+    place-items: center;
+    height: 100vh;
+  }
 `
