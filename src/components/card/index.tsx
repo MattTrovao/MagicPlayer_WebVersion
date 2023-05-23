@@ -144,8 +144,9 @@ export function Card() {
                   {
                     result.power ?
                       result.power + '/' + result.toughness
-                      : result.loyalty ? result.loyalty
-                        : ''
+                    : result.loyalty ? 
+                        result.loyalty
+                      : ''
                   }
                 </RuleText>
               </RuleInfo>
