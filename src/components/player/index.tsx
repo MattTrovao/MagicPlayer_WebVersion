@@ -1,5 +1,5 @@
 import { PlayerFrame, PlayerBox, PlayerName, PlayerLife, Life } from "./Player.style"
-import { Id } from "../ColorId/"
+import { ColorId } from "./components/ColorId/"
 import { Markers } from "./components/Markers"
 
 
@@ -10,7 +10,7 @@ export function Player() {
       <PlayerFrame>
         <PlayerName>
           Nome
-          <Id />
+          <ColorId />
         </PlayerName>
       </PlayerFrame>
 
@@ -18,7 +18,7 @@ export function Player() {
         <Markers></Markers>
 
         <Life>
-            40
+          40
         </Life>
       </PlayerLife>
     </PlayerBox>

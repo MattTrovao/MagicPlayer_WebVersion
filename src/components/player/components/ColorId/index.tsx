@@ -1,6 +1,6 @@
 import { IdBox, IdColor } from "./ColorId.style";
 
-export function Id(){
+export function ColorId(){
   return(
     <IdBox>
       <IdColor></IdColor>

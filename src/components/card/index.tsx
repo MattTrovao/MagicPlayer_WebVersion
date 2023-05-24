@@ -75,8 +75,7 @@ export function Card() {
     const response = await api.get(`named?fuzzy=${data.card}`)
     setResult(response.data)
 
-    let ruleData = response.data.rulings_uri.replace("https://api.scryfall.com/cards/", "").replace("/rulings", "");
-    const rulings = await api.get(`${ruleData}/rulings`)
+    const rulings = await api.get(`${response.data.id}/rulings`)
 
     const ruleList = rulings.data.data;
 
