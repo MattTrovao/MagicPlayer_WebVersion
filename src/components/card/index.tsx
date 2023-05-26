@@ -1,37 +1,21 @@
 import { useState } from 'react';
-import { useForm } from 'react-hook-form'
-import { zodResolver } from '@hookform/resolvers/zod'
-import * as zod from 'zod'
 
-
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Container } from "../global/Container";
-import { Label } from "../global/Label";
 import {
-  CardBox,
-  CardSearch,
   NoRule,
   ResultBox,
   ResultImg,
   RuleList,
   RuleText,
-  SearchBar,
-  SearchBtn,
-  SearchLegend,
   NameContainer,
   RuleDate,
   RuleInfo,
 } from "./Card.styles";
-import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
-import { api } from '../../utils/axios';
+
 import { formatDate } from '../../utils/format';
+import { CardSearch } from './CardSearch';
+import { Menu } from '../menu/DefaultMenu';
 
-
-const newCardFormValidationSchema = zod.object({
-  card: zod.string().min(3, 'Adicione ao menos 3 caracteres')
-})
-
-type CardFormData = zod.infer<typeof newCardFormValidationSchema>
 
 interface CardResult {
   id: string,
@@ -55,7 +39,13 @@ interface CardRuleData {
   comment: string,
   published_at: string,
 }
+interface CardForm { 
+  result: CardResult,
+  rules: CardRuleData[]
+}
 interface CardRules {
+  map(arg0: (rule: Text, index: Number) => import("react/jsx-runtime").JSX.Element): import("react").ReactNode;
+  length: number;
   data: CardRuleData[];
 }
 
@@ -63,60 +53,17 @@ export function Card() {
   const [result, setResult] = useState<CardResult | null>(null)
   const [rules, setRules] = useState<CardRules | null>(null)
 
-  const { register, handleSubmit, watch } = useForm<CardFormData>({
-    resolver: zodResolver(newCardFormValidationSchema),
-    defaultValues: {
-      card: '',
-    }
-  })
 
-  async function handleSearchCard(data: CardFormData) {
-
-    const response = await api.get(`named?fuzzy=${data.card}`)
-    setResult(response.data)
-
-    const rulings = await api.get(`${response.data.id}/rulings`)
-
-    const ruleList = rulings.data.data;
-
-    const mappedRuleList = ruleList.map((item: any) => ({
-      comment: item.comment,
-      published_at: item.published_at
-    }));
-
-    const cardRules: CardRules = {
-      data: mappedRuleList
-    };
-
-    setRules(cardRules);
-  }
-
-  const disableCardSearch = watch('card')
+  const handleFormSubmit = (data: CardForm) => {
+    setResult(data.result)
+    setRules(data.rules)
+    console.log(typeof data.rules);
+    
+  };
 
   return (
     <>
-      <Container>
-        <CardBox>
-          <Label htmlFor="CardInput">Busque por uma carta</Label>
-          <CardSearch onSubmit={handleSubmit(handleSearchCard)}>
-            <SearchBar
-              placeholder="The Scarab God"
-              id="CardInput"
-              {...register('card')}
-            />
-            <SearchBtn
-              disabled={!disableCardSearch}
-              type="submit"
-            >
-              <FontAwesomeIcon icon={faMagnifyingGlass} />
-            </SearchBtn>
-          </CardSearch>
-          <SearchLegend>
-            Para garantir mais resultados prefira buscar o nome da carta em <b>Inglês</b>. <br />
-            <small>Idiomas disponíveis: Inglês, Espanhol, Francês, Português, Alemão, Italiano, Japonês, Koreano, Russo, Chinês (Tradicional e Simplificado)</small>
-          </SearchLegend>
-        </CardBox>
-      </Container>
+      <CardSearch onFormSubmit={handleFormSubmit}  />
 
       {result !== null ?
         (
@@ -150,9 +97,9 @@ export function Card() {
                 </RuleText>
               </RuleInfo>
 
-              {rules && rules.data.length > 0 ? (
+              {rules && rules.length > 0 ? (
                 <RuleList>
-                  {rules.data.map((rule, index) => (
+                  {rules.map((rule: CardRuleData[], index:Number) => (
                     <RuleText key={index}>
                       <RuleDate>
                         {formatDate(rule.published_at)}:

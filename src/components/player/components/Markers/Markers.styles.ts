@@ -18,18 +18,23 @@ export const MarkerBtn = styled.button`
   border: 0;
   position: relative;
 
-  &[data-size=true]{
+  &[data-active]{
+    cursor: pointer
+  }
+
+  &[data-active=true]{
     img{
-    opacity: 1;
+      opacity: 1;
     }
   }
 
   img{
     opacity: .5;
+    transition: .4s all ease-in-out;
   }
 `
 
-const BaseMarkerValue = styled.span`
+const BaseMarkerValue = styled.button`
   position: absolute;
   z-index: 4;
   width: 100%;
@@ -40,6 +45,7 @@ const BaseMarkerValue = styled.span`
   justify-content: center;
   align-items: center;
   background-color: ${props => props.theme.COLORS.WHITE};
+  border: 0;
   cursor: pointer;
   transition: .4s all ease-in-out;
 

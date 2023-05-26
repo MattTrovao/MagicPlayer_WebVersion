@@ -1,14 +1,19 @@
 import { ThemeProvider } from 'styled-components'
 import theme from './theme'
 import { GlobalCSS } from './styles/global'
-import { Card } from './components/card'
-import { Player } from './components/player'
+import { BrowserRouter } from 'react-router-dom'
+import { Router } from './Router'
+import { Menu } from './components/menu/DefaultMenu'
 
 
 function App() {
   return (
     <ThemeProvider theme={theme}>
-      <Player />
+      <BrowserRouter>
+        <Router />
+
+        <Menu />
+      </BrowserRouter>
 
       <GlobalCSS />
     </ThemeProvider>

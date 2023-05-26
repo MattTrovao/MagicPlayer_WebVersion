@@ -5,7 +5,7 @@ export const CardBox = styled.div`
   padding: 20px 0;
 `
 
-export const CardSearch = styled.form`
+export const CardForm = styled.form`
   display: grid;
   grid-template-columns: 1fr 36px;
   gap: 0;
@@ -60,6 +60,23 @@ export const ResultBox = styled.section`
   display: flex;
   flex-direction: column;
   gap: .8rem;
+  max-height: 500px;
+
+  overflow: auto;
+
+  &::-webkit-scrollbar {
+  width: 8px;
+  height: 6px;
+}
+
+&::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+&::-webkit-scrollbar-thumb {
+  background: ${props => props.theme.COLORS.PRIMARY};
+  border-radius: 10px;
+}
 `
 
 export const RuleError = styled.h1`

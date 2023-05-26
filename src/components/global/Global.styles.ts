@@ -30,31 +30,6 @@ export const GlobalRow = styled.div`
   margin: 0 auto;
   padding: 0 1rem;
 `
-
-// Buttons
-export type Variants = 'primary' | 'secondary' | 'neutral'
-
-interface BtnContainerProps {
-  variant: Variants;
-}
-
-const btnVariant = {
-  primary: 'red',
-  secondary: 'orange',
-  neutral: 'green'
-}
-
-export const BtnContainer = styled.button<BtnContainerProps>`
-  padding: 10px 20px;
-  border-radius: 8px;
-  border: 0;
-  cursor: pointer;
-  background-color: ${props => props.theme.COLORS.PRIMARY};
-  color: ${props => props.theme.COLORS.WHITE};
-  font-size: ${props => props.theme.TEXT_SIZE.XS};
-  ${shareTransition} 
-`
-
 // GamePlayers
 export const GamePlayers = styled.section`
   display: flex;
