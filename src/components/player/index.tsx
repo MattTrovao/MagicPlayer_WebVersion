@@ -31,9 +31,7 @@ import {
   ResultBox, 
   ResultCaption, 
   ResultImg, 
-  ResultImgBox, 
-  RuleInfo, 
-  RuleText 
+  ResultImgBox,
 } from "../card/Card.styles";
 
 import { CardResult } from "../../@types/card";
@@ -46,7 +44,7 @@ type PlayerFormData = zod.infer<typeof newPlayerFormValidationSchema>
 
 export function Player() {
   const [life, setLife] = useState<number>(40);
-  const [name, setName] = useState<string>('Nome/Apelido');
+  const [name, setName] = useState<string>('Nome');
 
   const [result, setResult] = useState<CardResult | null>(null)
 

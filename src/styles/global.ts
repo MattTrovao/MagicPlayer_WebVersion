@@ -22,6 +22,41 @@ export const GlobalCSS = createGlobalStyle`
     height: 100vh;
   }
 
+  // Botões
+  .btn{
+    ${shareDisabled}
+    padding: 5px 10px;
+    background: ${props => props.theme.COLORS.WHITE};
+    font-size: ${props => props.theme.TEXT_SIZE.XS};
+    display: flex;
+    justify-content: space-between;
+    gap: .8rem;
+    border-radius: 5px;
+    border: 2px solid transparent;
+    transition: all .4s ease-in-out;
+    cursor: pointer;
+
+    &.save{
+      border-color: ${props => props.theme.COLORS.SUCCESS};
+      svg{
+        color: ${props => props.theme.COLORS.SUCCESS};
+      }
+    }
+
+    &.close{
+      border-color: ${props => props.theme.COLORS.ERROR};
+      svg{
+        color: ${props => props.theme.COLORS.ERROR};
+      }
+    }
+
+    &:not(:disabled):hover{
+      opacity: .5;
+      border-radius: 2px;
+    }
+  }
+
+  // Radix Dialog
   .DialogOverlay{
     width: 100vw;
     height: 100vh;
@@ -62,36 +97,46 @@ export const GlobalCSS = createGlobalStyle`
     }
   }
 
-  .btn{
-    ${shareDisabled}
-    padding: 5px 10px;
-    background: ${props => props.theme.COLORS.WHITE};
-    font-size: ${props => props.theme.TEXT_SIZE.XS};
-    display: flex;
-    justify-content: space-between;
-    gap: .8rem;
-    border-radius: 5px;
-    border: 2px solid transparent;
-    transition: all .4s ease-in-out;
-    cursor: pointer;
+  // Radix Tabs
+  .Tabs{
+    padding: 1.2rem 0;
 
-    &.save{
-      border-color: ${props => props.theme.COLORS.SUCCESS};
-      svg{
-        color: ${props => props.theme.COLORS.SUCCESS};
+    .Tabs__list{
+      display: flex; 
+      justify-content: space-between;
+      gap: 0;
+      margin-bottom: 1rem;
+      
+      .list__trigger{
+        flex: 1 auto;
+        border: 0;
+        background: none;
+        cursor: pointer;
+        transition: all .4s ease-in-out;
+
+        &:hover{
+          opacity: .5;
+        }
+
+        &[data-state='active']{
+          &>*{
+            border-bottom-color: ${props => props.theme.COLORS.PRIMARY};
+            color: ${props => props.theme.COLORS.PRIMARY};
+          }
+        }
       }
     }
 
-    &.close{
-      border-color: ${props => props.theme.COLORS.ERROR};
-      svg{
-        color: ${props => props.theme.COLORS.ERROR};
-      }
-    }
+    .Tabs__content{
+      display: flex;
+      flex-direction:column;
+      justify-content: space-between;
+      gap: 1rem;
 
-    &:not(:disabled):hover{
-      opacity: .5;
-      border-radius: 2px;
+      &[data-state='active']{
+        height: 500px;
+        overflow: true;
+      }
     }
   }
 `

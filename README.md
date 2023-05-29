@@ -60,3 +60,18 @@ Como o projeto é feito para estudo e aumento de portfólio foi decidido criar u
 - Magic The Gathering criado por Richard Garfield, gerido pela [Wizards of The Coast](https://company.wizards.com/en)
 
 - [Scryfall](https://scryfall.com/) 
+
+---
+
+# Bibliotecas utilizadas
+
+- FontAwesome v6.4
+- React Hook Forms  v7.43.9
+- React Hook Forms Resolvers v3.1
+- Zod v3.21.4
+- Axios v1.4
+- React SVG v16.1.13
+- Radix
+  - Dialog v1.0.3
+  - Select v1.2.1
+  - Tabs v1.0.3

@@ -8,7 +8,7 @@ export const MarkerBox = styled.div`
   gap: 1.2rem;
 `
 
-export const MarkerBtn = styled.button`
+export const MarkerBtn = styled.div`
   ${shareTransition}
   background-color: ${props => props.theme.COLORS.WHITE};
   color: ${props => props.theme.COLORS.BLACK};
@@ -17,6 +17,9 @@ export const MarkerBtn = styled.button`
   border-radius: 50%;
   border: 0;
   position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
   &[data-active]{
     cursor: pointer
@@ -44,7 +47,6 @@ const BaseMarkerValue = styled.button`
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: ${props => props.theme.COLORS.WHITE};
   border: 0;
   cursor: pointer;
   transition: .4s all ease-in-out;
@@ -56,13 +58,15 @@ const BaseMarkerValue = styled.button`
   &::before{
     font-size: ${props => props.theme.NUMBER_SIZE.SM};
     font-weight: bold;
-    color: ${props => props.theme.COLORS.BLACK};
+    color: ${props => props.theme.COLORS.WHITE};
   }
 `
 
 export const MarkerAdd = styled(BaseMarkerValue)`
   top: 0;
   border-radius: 45px 45px 0 0;
+  background-color: ${props => props.theme.COLORS.SUCCESS};
+  
   &::before{
     content:"+";
   }
@@ -70,6 +74,8 @@ export const MarkerAdd = styled(BaseMarkerValue)`
 export const MarkerRemove = styled(BaseMarkerValue)`
   bottom: 0;
   border-radius: 0 0 45px 45px;
+  background-color: ${props => props.theme.COLORS.ERROR};
+
   &::before{
     content:"-";
   }
