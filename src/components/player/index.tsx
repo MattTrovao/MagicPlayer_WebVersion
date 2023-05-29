@@ -1,37 +1,42 @@
 import { useState } from "react"
 import { useForm } from "react-hook-form";
+import * as zod from 'zod'
 
 
 import * as Dialog from '@radix-ui/react-dialog';
 import '../../styles/global'
 
-import { PlayerFrame, PlayerBox, PlayerNameBox, PlayerName, PlayerLife, Life, LifeBtnBox, LifeAdd, LifeRemove, LifeValue, PlayerInput } from "./Player.style"
 import { ColorId } from "./components/ColorId/"
 import { Markers } from "./components/Markers"
 import { faFloppyDisk, faX } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { api } from "../../utils/axios";
 import { CardSearch } from "../card/CardSearch";
 import { Label } from "../global/Label";
-import { NameContainer, ResultBox, ResultImg, RuleInfo, RuleText } from "../card/Card.styles";
 
-interface CardResult {
-  id: string,
-  name: string,
-  lang: string,
-  image_uris: {
-    large: string,
-    art_crop: string,
-  },
-  mana_cost: string,
-  cmc: number,
-  type_line: string,
-  color_identity: string[],
-  rulings_uri: URL,
-  power: number,
-  toughness: number,
-  loyalty: number,
-}
+import { 
+  PlayerFrame, 
+  PlayerBox, 
+  PlayerNameBox, 
+  PlayerName, 
+  PlayerLife, 
+  Life, 
+  LifeBtnBox, 
+  LifeAdd, 
+  LifeRemove,
+  LifeValue, 
+  PlayerInput 
+} from "./Player.style"
+import { 
+  NameContainer, 
+  ResultBox, 
+  ResultCaption, 
+  ResultImg, 
+  ResultImgBox, 
+  RuleInfo, 
+  RuleText 
+} from "../card/Card.styles";
+
+import { CardResult } from "../../@types/card";
 
 const newPlayerFormValidationSchema = zod.object({
   playerName: zod.string().min(3, 'Adicione ao menos 3 caracteres')
@@ -89,8 +94,8 @@ export function Player() {
                     <Label>
                       Nome/Apelido
                     </Label>
-                    <PlayerInput 
-                      placeholder="Nome/Apelido" 
+                    <PlayerInput
+                      placeholder="Nome/Apelido"
                       id="CardInput"
                       {...register('playerName')}
                     />
@@ -109,24 +114,11 @@ export function Player() {
                         </NameContainer>
 
                         {result.image_uris && (
-                          <ResultImg src={result.image_uris.art_crop} className="small"/>
+                          <ResultImgBox>
+                            <ResultImg src={result.image_uris.art_crop} className="small" />
+                            <ResultCaption>Artista: <b>{result.artist}</b></ResultCaption>
+                          </ResultImgBox>
                         )}
-
-                        <RuleInfo>
-                          <RuleText>
-                            {result.type_line}
-                          </RuleText>
-
-                          <RuleText>
-                            {
-                              result.power ?
-                                result.power + '/' + result.toughness
-                                : result.loyalty ?
-                                  result.loyalty
-                                  : ''
-                            }
-                          </RuleText>
-                        </RuleInfo>
                       </ResultBox>
                     )}
 

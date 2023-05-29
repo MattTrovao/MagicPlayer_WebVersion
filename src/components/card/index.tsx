@@ -10,58 +10,40 @@ import {
   NameContainer,
   RuleDate,
   RuleInfo,
+  ResultCaption,
+  ResultImgBox,
 } from "./Card.styles";
 
 import { formatDate } from '../../utils/format';
 import { CardSearch } from './CardSearch';
 
+import { CardResult, CardRules, CardForm, CardRuleData } from '../../@types/card';
 
-interface CardResult {
-  id: string,
-  name: string,
-  lang: string,
-  image_uris: {
-    large: string,
-    art_crop: string,
-  },
-  mana_cost: string,
-  cmc: number,
-  type_line: string,
-  color_identity: string[],
-  rulings_uri: URL,
-  power: number,
-  toughness: number,
-  loyalty: number,
-}
-
-interface CardRuleData {
-  comment: string,
-  published_at: string,
-}
-interface CardForm { 
-  result: CardResult,
-  rules: CardRuleData[]
-}
-interface CardRules {
-  map(arg0: (rule: Text, index: Number) => import("react/jsx-runtime").JSX.Element): import("react").ReactNode;
-  length: number;
-  data: CardRuleData[];
-}
 
 export function Card() {
   const [result, setResult] = useState<CardResult | null>(null)
-  const [rules, setRules] = useState<CardRules | null>(null)
+  const [cardRules, setCardRules] = useState<CardRules | null>(null);
 
 
   const handleFormSubmit = (data: CardForm) => {
     setResult(data.result)
-    setRules(data.rules)    
+    setCardRules(prevState => ({
+      ...prevState,
+      data: data.rules,
+      length: data.rules.length,
+      map: (rule, index) => {
+        // JSX.Element mapping logic
+        return <div key={index}>{rule.comment}</div>;
+      }
+    }));
+    console.log(cardRules);
+
   };
 
   return (
     <>
       <Container>
-        <CardSearch onFormSubmit={handleFormSubmit}  />
+        <CardSearch onFormSubmit={handleFormSubmit} />
       </Container>
 
       {result !== null ?
@@ -76,8 +58,11 @@ export function Card() {
                 )}
               </NameContainer>
 
-              {result.image_uris &&(
-                <ResultImg src={result.image_uris.art_crop} />
+              {result.image_uris && (
+                <ResultImgBox>
+                  <ResultImg src={result.image_uris.art_crop} />
+                  <ResultCaption>Artista: <b>{result.artist}</b></ResultCaption>
+                </ResultImgBox>
               )}
 
               <RuleInfo>
@@ -89,21 +74,21 @@ export function Card() {
                   {
                     result.power ?
                       result.power + '/' + result.toughness
-                    : result.loyalty ? 
+                      : result.loyalty ?
                         result.loyalty
-                      : ''
+                        : ''
                   }
                 </RuleText>
               </RuleInfo>
 
-              {rules && rules.length > 0 ? (
+              {cardRules && cardRules.data && cardRules.data.length > 0 ? (
                 <RuleList>
-                  {rules.map((rule: CardRuleData[], index:Number) => (
-                    <RuleText key={index}>
+                  {cardRules.data.map((data: CardRuleData, index: number) => (
+                    <RuleText key={index.toString()}>
                       <RuleDate>
-                        {formatDate(rule.published_at)}:
+                        {formatDate(data.published_at)}:
                       </RuleDate>
-                      {rule.comment}
+                      {data.comment}
                     </RuleText>
                   ))}
                 </RuleList>
@@ -112,6 +97,7 @@ export function Card() {
                   Nenhuma regra encontrada
                 </NoRule>
               )}
+
             </ResultBox>
           </Container>
         ) : ''

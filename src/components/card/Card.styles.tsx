@@ -101,6 +101,12 @@ export const NameContainer = styled.div`
     font-size: ${props => props.theme.TEXT_SIZE.MD};
   }
 `
+export const ResultImgBox = styled.div`
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  gap: 0.5rem;
+`
 
 export const ResultImg = styled.img`
   width: 100%;
@@ -111,6 +117,13 @@ export const ResultImg = styled.img`
     height: 150px;
   }
 `
+
+export const ResultCaption = styled.p`
+  color: ${props => props.theme.COLORS.BLACK};
+  font-size: ${props => props.theme.NUMBER_SIZE.XS};
+  text-align: right;
+`
+
 export const RuleList = styled.div`
   width: 90%;
   margin: 0 auto;

@@ -16,6 +16,7 @@ import {
   SearchLegend,
 } from "./Card.styles";
 import { api } from '../../utils/axios';
+import { CardRules } from '../../@types/card';
 
 
 const newCardFormValidationSchema = zod.object({
@@ -46,13 +47,12 @@ export function CardSearch({onFormSubmit}: any) {
       comment: item.comment,
       published_at: item.published_at
     }));
-
-    const cardRules: CardRules = {
-      data: mappedRuleList
-    };
-
+   
     
-    onFormSubmit({result: response.data,rules: rulings.data.data})
+    onFormSubmit({
+      result: response.data,
+      rules: mappedRuleList
+    })
   }
 
   const disableCardSearch = watch('card')
