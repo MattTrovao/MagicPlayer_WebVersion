@@ -71,6 +71,22 @@ export const PlayerLife = styled.div`
   margin: 0 auto;
 `
 
+export const PlayerInput = styled.input`
+  background: ${props => props.theme.COLORS.WHITE};
+  border: none;
+  font-size: ${props => props.theme.TEXT_SIZE.SM};
+  color: ${props => props.theme.COLORS.BLACK};
+  height: 40px;
+  width: 100%;
+  padding: 0 15px;
+  border-radius: 8px;
+  outline: none;
+
+  &::placeholder{
+    color: ${props => props.theme.SHADOW.BLACK};
+  }
+`
+
 export const Life = styled.div`
   position: relative;
   width: 30%;
@@ -114,15 +130,14 @@ const LifeBtn = styled.button`
   border: 0;
   border-radius: 10px;
   font-size: ${props => props.theme.NUMBER_SIZE.XL};
-  color: ${props => props.theme.COLORS.BLACK};
+  color: ${props => props.theme.COLORS.WHITE};
   cursor: pointer;
   width: 100%;
   margin: 0 auto;
 `
 export const LifeAdd = styled(LifeBtn)`
-  background: ${props => props.theme.COLORS.YELLOW};
+  background: ${props => props.theme.COLORS.SUCCESS};
 `
 export const LifeRemove = styled(LifeBtn)`
   background: ${props => props.theme.COLORS.ERROR};
-  color: ${props => props.theme.COLORS.WHITE};
 `

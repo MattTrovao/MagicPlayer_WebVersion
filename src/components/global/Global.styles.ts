@@ -16,6 +16,13 @@ export const shareDisabled = css`
  }
 `
 
+// Page Container
+export const PageContainer = styled.main`
+  width: 100%;
+  height: calc( 100vh - 60px);
+  overflow: hidden;
+`
+
 // Container
 export const GlobalContainer = styled.section`
   display: flex;

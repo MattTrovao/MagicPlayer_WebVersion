@@ -26,7 +26,6 @@ type CardFormData = zod.infer<typeof newCardFormValidationSchema>
 
 
 export function CardSearch({onFormSubmit}: any) {
-
   const { register, handleSubmit, watch } = useForm<CardFormData>({
     resolver: zodResolver(newCardFormValidationSchema),
     defaultValues: {
@@ -59,29 +58,25 @@ export function CardSearch({onFormSubmit}: any) {
   const disableCardSearch = watch('card')
 
   return (
-    <>
-      <Container>
-        <CardBox>
-          <Label htmlFor="CardInput">Busque por uma carta</Label>
-          <CardForm onSubmit={handleSubmit(handleSearchCard)}>
-            <SearchBar
-              placeholder="The Scarab God"
-              id="CardInput"
-              {...register('card')}
-            />
-            <SearchBtn
-              disabled={!disableCardSearch}
-              type="submit"
-            >
-              <FontAwesomeIcon icon={faMagnifyingGlass} />
-            </SearchBtn>
-          </CardForm>
-          <SearchLegend>
-            Para garantir mais resultados prefira buscar o nome da carta em <b>Inglês</b>. <br />
-            <small>Idiomas disponíveis: Inglês, Espanhol, Francês, Português, Alemão, Italiano, Japonês, Koreano, Russo, Chinês (Tradicional e Simplificado)</small>
-          </SearchLegend>
-        </CardBox>
-      </Container>
-    </>
+    <CardBox>
+      <Label htmlFor="CardInput">Busque por uma carta</Label>
+      <CardForm onSubmit={handleSubmit(handleSearchCard)}>
+        <SearchBar
+          placeholder="The Scarab God"
+          id="CardInput"
+          {...register('card')}
+        />
+        <SearchBtn
+          disabled={!disableCardSearch}
+          type="submit"
+        >
+          <FontAwesomeIcon icon={faMagnifyingGlass} />
+        </SearchBtn>
+      </CardForm>
+      <SearchLegend>
+        Para garantir mais resultados prefira buscar o nome da carta em <b>Inglês</b>. <br />
+        <small>Idiomas disponíveis: Inglês, Espanhol, Francês, Português, Alemão, Italiano, Japonês, Koreano, Russo, Chinês (Tradicional e Simplificado)</small>
+      </SearchLegend>
+    </CardBox>
   )
 }

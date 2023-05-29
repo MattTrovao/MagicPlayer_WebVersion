@@ -14,7 +14,6 @@ import {
 
 import { formatDate } from '../../utils/format';
 import { CardSearch } from './CardSearch';
-import { Menu } from '../menu/DefaultMenu';
 
 
 interface CardResult {
@@ -56,14 +55,14 @@ export function Card() {
 
   const handleFormSubmit = (data: CardForm) => {
     setResult(data.result)
-    setRules(data.rules)
-    console.log(typeof data.rules);
-    
+    setRules(data.rules)    
   };
 
   return (
     <>
-      <CardSearch onFormSubmit={handleFormSubmit}  />
+      <Container>
+        <CardSearch onFormSubmit={handleFormSubmit}  />
+      </Container>
 
       {result !== null ?
         (

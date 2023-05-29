@@ -106,6 +106,10 @@ export const ResultImg = styled.img`
   width: 100%;
   height: 300px;
   object-fit: contain;
+
+  &.small {
+    height: 150px;
+  }
 `
 export const RuleList = styled.div`
   width: 90%;

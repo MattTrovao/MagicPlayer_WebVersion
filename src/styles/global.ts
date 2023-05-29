@@ -1,5 +1,5 @@
 import { createGlobalStyle } from "styled-components";
-import { shareDisabled, shareTransition } from "../components/global/Global.styles";
+import { shareDisabled } from "../components/global/Global.styles";
 
 export const GlobalCSS = createGlobalStyle`
   * {
@@ -25,28 +25,35 @@ export const GlobalCSS = createGlobalStyle`
   .DialogOverlay{
     width: 100vw;
     height: 100vh;
-    position: absolute;
+    position: fixed;
     inset: 0;
     background: rgba(0,0,0, .5);
     transition: all .4s ease-in-out;
+    z-index: 9999;
   }
 
   .DialogContent{
-    position: absolute;
+    position: fixed;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    background-color: ${props => props.theme.COLORS.WHITE};
+    background-color: ${props => props.theme.COLORS.BLACK};
     border-radius: 10px;
     transition: inherit;
     padding: 1.2rem 2rem;
     display: flex;
     flex-direction: column;
     gap: 1rem;
+    width: 50vw;
+    z-index: 99999;
 
     .DialogContent__title{
-      color: ${props => props.theme.COLORS.BLACK};
+      color: ${props => props.theme.COLORS.WHITE};
       font-size: ${props => props.theme.NUMBER_SIZE.MD};
+    }
+
+    .DialogContent__body{
+      z-index: 99999;
     }
 
     .DialogContent__btn{
@@ -58,11 +65,11 @@ export const GlobalCSS = createGlobalStyle`
   .btn{
     ${shareDisabled}
     padding: 5px 10px;
+    background: ${props => props.theme.COLORS.WHITE};
     font-size: ${props => props.theme.TEXT_SIZE.XS};
     display: flex;
     justify-content: space-between;
     gap: .8rem;
-    background: none;
     border-radius: 5px;
     border: 2px solid transparent;
     transition: all .4s ease-in-out;
