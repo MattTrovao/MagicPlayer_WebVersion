@@ -24,7 +24,6 @@ export function Card() {
   const [result, setResult] = useState<CardResult | null>(null)
   const [cardRules, setCardRules] = useState<CardRules | null>(null);
 
-
   const handleFormSubmit = (data: CardForm) => {
     setResult(data.result)
     setCardRules(prevState => ({
@@ -36,8 +35,6 @@ export function Card() {
         return <div key={index}>{rule.comment}</div>;
       }
     }));
-    console.log(cardRules);
-
   };
 
   return (
@@ -81,17 +78,34 @@ export function Card() {
                 </RuleText>
               </RuleInfo>
 
+              {
+                result.oracle_text && <RuleText> {result.oracle_text.replace(/{/g, "").replace(/}/g, " ")}</RuleText>              
+              }
+              
+
               {cardRules && cardRules.data && cardRules.data.length > 0 ? (
-                <RuleList>
-                  {cardRules.data.map((data: CardRuleData, index: number) => (
-                    <RuleText key={index.toString()}>
-                      <RuleDate>
-                        {formatDate(data.published_at)}:
-                      </RuleDate>
-                      {data.comment}
+                <>
+                  <RuleInfo>
+                    <RuleText>
+                      Regras
                     </RuleText>
-                  ))}
-                </RuleList>
+                    <RuleText>
+                      <small>Regras retiradas do Scryfall</small>
+                    </RuleText>
+                  </RuleInfo>
+                  <RuleList>
+                    {cardRules.data.map((data: CardRuleData, index: number) => (
+                      <RuleText key={index.toString()}>
+                        <RuleDate>
+                          {formatDate(data.published_at)}:
+                        </RuleDate>
+                        {data.comment}
+                      </RuleText>
+                    ))}
+
+                    
+                  </RuleList>
+                </>
               ) : (
                 <NoRule>
                   Nenhuma regra encontrada

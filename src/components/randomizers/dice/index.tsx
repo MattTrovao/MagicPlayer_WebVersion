@@ -14,6 +14,8 @@ export function Dice() {
   const [diceNumber, SetDiceNumber] = useState<number>(0)
   const [diceMax, SetDiceMax] = useState<number>(20)
   const [dicePath, SetDicePath] = useState<string>('../../../src/assets/Dices/Shape_D20.svg')
+  const [isDisabled, setDisabled] = useState<boolean>(false)
+
 
   function handleNewDiceType(e: any) {
     SetDiceNumber(0)
@@ -23,7 +25,12 @@ export function Dice() {
   }
 
   function handleNewDiceValue() {
-    SetDiceNumber(Math.floor(Math.random() * diceMax) + 1)
+    setDisabled(true)
+    setTimeout(() => {
+      setDisabled(false)
+      SetDiceNumber(Math.floor(Math.random() * diceMax) + 1)
+    }, 1500);   
+
   }
 
   return (
@@ -89,8 +96,18 @@ export function Dice() {
       </div>
 
       <DiceContent>
-        <DiceImg src={dicePath} onClick={handleNewDiceValue} />
-        <DiceValue onClick={handleNewDiceValue} data-dice={diceMax == 4 && 'd4'}>
+        <DiceImg 
+          src={dicePath} 
+          onClick={handleNewDiceValue} 
+          data-dice={diceMax == 4 && 'd4'}
+          data-animated={isDisabled}
+        />
+        <DiceValue 
+          onClick={handleNewDiceValue} 
+          data-dice={diceMax == 4 && 'd4'}
+          data-animated={isDisabled}
+
+        >
           {diceNumber != 0
             ?  diceNumber 
             : ''

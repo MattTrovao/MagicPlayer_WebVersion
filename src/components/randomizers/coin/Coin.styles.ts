@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { ReactSVG } from "react-svg";
+import { randomizerAnimation } from "../Randomizers.styles";
 
 export const CoinSide = styled.h2`
   font-size: ${props => props.theme.NUMBER_SIZE.XL};
@@ -21,19 +22,10 @@ export const CoinImg = styled(ReactSVG)`
   }
   
   &[data-animated=true]{
-    animation: coinRotate 1.5s ease-in-out;
+    ${randomizerAnimation}
   }
   
   &:not([data-disabled=true]):hover{
     opacity: .7;
-  }
-
-  @keyframes coinRotate{
-    0%,100%{
-      transform: rotate(-360deg) scale(.95);
-    }
-    50%{
-      transform: rotate(360deg) scale(1);
-    }
   }
 `

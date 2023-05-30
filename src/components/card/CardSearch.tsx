@@ -16,7 +16,6 @@ import {
   SearchLegend,
 } from "./Card.styles";
 import { api } from '../../utils/axios';
-import { CardRules } from '../../@types/card';
 
 
 const newCardFormValidationSchema = zod.object({

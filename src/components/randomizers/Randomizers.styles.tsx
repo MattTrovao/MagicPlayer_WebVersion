@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 
 export const BtnTab = styled.span`
   display: block;
@@ -13,4 +13,17 @@ export const TabContent = styled.section`
   justify-content: center;
   gap: 5rem;
   padding: 2rem 0;
+`
+
+export const randomizerAnimation = css`
+  animation: coinRotate 1.5s ease-in-out;
+
+  @keyframes coinRotate{
+    0%,100%{
+      transform: rotate(-360deg) scale(.95);
+    }
+    50%{
+      transform: rotate(360deg) scale(1);
+    }
+  }
 `

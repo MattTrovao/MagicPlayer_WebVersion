@@ -30,18 +30,23 @@ export const theme = {
   },
   TEXT_SIZE: {
     XS: '14px',
-    SM: '16px',
+    SM: '18px',
     MD: '22px',
     XL: '26px',
     '2XL': '34px',
     '4XL': '40px',
   },
   NUMBER_SIZE: {
-    XS: '16px',
+    XS: '12px',
     SM: '18px',
     MD: '26px',
-    XL: '36px',
+    XL: '37px',
     DICE: '60px',
-    PL: '160px',
+    PL: '180px',
   },
+  FONTS: {
+    REGULAR: 'OpenSans_400Regular',
+    BOLD: 'OpenSans_700Bold',
+    NUMBER: 'NotoSansMono_700Bold'
+  }
 }

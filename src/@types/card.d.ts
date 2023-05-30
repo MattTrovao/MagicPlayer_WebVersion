@@ -15,6 +15,7 @@ export interface CardResult {
   power: number,
   toughness: number,
   loyalty: number,
+  oracle_text: string,
 }
 
 export interface CardRuleData {
