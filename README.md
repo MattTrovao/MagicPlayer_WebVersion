@@ -13,7 +13,7 @@
 - [ ] Códificação das interfaces Web
   - [x] Codificação da interface de busca de carta
   - [ ] Codificação da interface de jogadores
-  - [ ] Codificação da interface de randomizadores (dados e moedas)
+  - [x] Codificação da interface de randomizadores (dados e moedas)
   - [ ] Revisão e ajustes nos códigos
 
 - [ ] Códificação das interfaces Mobile
