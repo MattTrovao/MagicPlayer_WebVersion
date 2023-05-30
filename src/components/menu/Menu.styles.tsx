@@ -14,6 +14,14 @@ export const MenuItens = styled.nav`
   justify-content: space-between;
   align-items: center;
   gap: 1.5rem;
+
+  a.active{
+    svg{
+      path {
+        fill: ${props => props.theme.COLORS.PRIMARY};
+      }
+    }
+  }
 `
 export const Icon = styled.div`
   svg{

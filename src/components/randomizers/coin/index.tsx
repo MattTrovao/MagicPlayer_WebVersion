@@ -3,7 +3,8 @@ import { useState } from "react";
 import NoResult from '../../../assets/Coin/Coin.svg'
 import Face from '../../../assets/Coin/Face.svg'
 import Crown from '../../../assets/Coin/Crown.svg'
-import { CoinBox, CoinImg, CoinSide } from "./Coin.styles";
+import { CoinImg, CoinSide } from "./Coin.styles";
+import { TabContent } from "../Randomizers.styles";
 
 export function Coin() {
   const [coin, SetCoin] = useState<string>('')
@@ -26,9 +27,14 @@ export function Coin() {
   }
 
   return(
-    <CoinBox>
+    <TabContent>
       <CoinSide>
-        {coin}
+        {coin && !isDisabled 
+          ? coin 
+          : isDisabled 
+            ? '...'
+            : ''
+        }
       </CoinSide>
       
       <CoinImg 
@@ -42,6 +48,6 @@ export function Coin() {
       />
 
 
-    </CoinBox>
+    </TabContent>
   )
 }

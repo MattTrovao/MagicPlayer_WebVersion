@@ -7,3 +7,10 @@ export const BtnTab = styled.span`
   font-size: ${props => props.theme.NUMBER_SIZE.MD};
   border-bottom: 1px solid ${props => props.theme.COLORS.WHITE};
 `
+export const TabContent = styled.section`
+  display: flex;
+  flex-direction:column;
+  justify-content: center;
+  gap: 5rem;
+  padding: 2rem 0;
+`

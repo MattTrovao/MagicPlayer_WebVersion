@@ -2,6 +2,7 @@ import styled, { css } from "styled-components";
 
 // Shared Styles
 export const shareTransition = css`
+  cursor: pointer;
   transition: .4s all ease-in-out;
 
   &:not(:disabled):hover{

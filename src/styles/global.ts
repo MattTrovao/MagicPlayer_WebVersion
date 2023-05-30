@@ -1,5 +1,5 @@
 import { createGlobalStyle } from "styled-components";
-import { shareDisabled } from "../components/global/Global.styles";
+import { shareDisabled, shareTransition } from "../components/global/Global.styles";
 
 export const GlobalCSS = createGlobalStyle`
   * {
@@ -136,6 +136,74 @@ export const GlobalCSS = createGlobalStyle`
       &[data-state='active']{
         height: 500px;
         overflow: true;
+      }
+    }
+  }
+
+  // Select
+  .STrigger{
+    ${shareTransition}
+    background-color: ${props => props.theme.COLORS.WHITE};
+    border: none;
+    border-radius: 8px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    padding-left: 1rem;
+    width: 100%;
+    outline: none;
+
+
+    & > span{
+      font-size: ${props => props.theme.TEXT_SIZE.SM};
+      color: ${props => props.theme.COLORS.BLACK};
+    }
+
+    .STrigger__btn{
+      ${shareTransition}
+      background-color: ${props => props.theme.COLORS.SUCCESS};
+      color: ${props => props.theme.COLORS.WHITE};
+      width: 40px;
+      height: 40px;
+      border-radius: inherit;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      svg{
+        width: 50%;
+        height: 50%;
+      }
+    }
+  }
+
+  .SContent{
+    background-color: ${props => props.theme.COLORS.WHITE};
+    border: none;
+    border-radius: 8px;
+    margin: 0;
+    left: 0;
+    padding: 1rem 5rem;
+    width: 100%;
+
+    .SContent__viewport{
+      display: flex;
+      flex-direction: column;
+      gap: 1.2rem;
+      
+      .viewport__item{
+        font-size: ${props => props.theme.TEXT_SIZE.SM};
+        color: ${props => props.theme.COLORS.BLACK};
+        transition: all ease-in-out .4s;
+        cursor: pointer;
+
+        &:hover{
+          color: ${props => props.theme.COLORS.SUCCESS};
+          opacity: .8;
+          border: none;
+          outline: none;
+        }
       }
     }
   }

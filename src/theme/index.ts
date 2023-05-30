@@ -41,6 +41,7 @@ export default {
     SM: '18px',
     MD: '26px',
     XL: '37px',
+    DICE: '60px',
     PL: '180px',
   },
   FONTS: {

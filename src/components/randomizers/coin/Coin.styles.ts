@@ -1,23 +1,18 @@
-import { ReactSVG } from "react-svg";
 import styled from "styled-components";
-
-export const CoinBox = styled.section`
-  display: flex;
-  flex-direction:column;
-  justify-content: center;
-  text-align: center;
-  gap: 5rem;
-  padding: 2rem 0;
-`
+import { ReactSVG } from "react-svg";
 
 export const CoinSide = styled.h2`
   font-size: ${props => props.theme.NUMBER_SIZE.XL};
   color: ${props => props.theme.COLORS.WHITE};
   height: 42px;
+  text-align: center;
 `
 
 export const CoinImg = styled(ReactSVG)`
   cursor: pointer;
+  position: relative;
+  text-align: center;
+
   transition: all .4s ease-in-out;
   
   &[data-disabled=true]{
