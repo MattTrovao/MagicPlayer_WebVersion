@@ -1,13 +1,18 @@
+import { ColorInterface } from "../../../../@types/colors";
 import { IdBox, IdColor } from "./ColorId.style";
 
-export function ColorId(){
+
+export function ColorId(colors: ColorInterface){
+  console.log(typeof colors, colors.colors)
+
   return(
     <IdBox>
-      <IdColor></IdColor>
-      <IdColor></IdColor>
-      <IdColor></IdColor>
-      <IdColor></IdColor>
-      <IdColor></IdColor>
+      {
+        colors &&
+        colors.colors.map((color: string, index: number) => {
+          <IdColor key={index} className={color}/>
+        })
+      }
     </IdBox>
   )
 }

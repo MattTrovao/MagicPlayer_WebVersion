@@ -17,6 +17,11 @@ export const IdColor = styled.div`
   height: 12px;
   border-radius: 50%;
   background-color: ${props => props.theme.CARDS.COLORLESS};
-
   ${shareTransition}
+
+  &.W{ background-color: ${props => props.theme.CARDS.WHITE}; }
+  &.U{ background-color: ${props => props.theme.CARDS.BLUE}; }
+  &.B{ background-color: ${props => props.theme.CARDS.BLACK}; }
+  &.R{ background-color: ${props => props.theme.CARDS.RED}; }
+  &.G{ background-color: ${props => props.theme.CARDS.GREEN}; }
 `

@@ -1,6 +1,5 @@
 import { useState } from "react"
 import { useForm } from "react-hook-form";
-import * as zod from 'zod'
 
 
 import * as Dialog from '@radix-ui/react-dialog';
@@ -34,24 +33,20 @@ import {
   ResultImgBox,
 } from "../card/Card.styles";
 
-import { CardResult } from "../../@types/card";
-import { zodResolver } from "@hookform/resolvers/zod";
+import { CardForm, CardResult } from "../../@types/card";
+import { ColorInterface } from "../../@types/colors";
 
-const newPlayerFormValidationSchema = zod.object({
-  playerName: zod.string().min(3, 'Adicione ao menos 3 caracteres')
-})
 
-type PlayerFormData = zod.infer<typeof newPlayerFormValidationSchema>
 
 export function Player() {
   const [life, setLife] = useState<number>(40);
-  const [name, setName] = useState<string>('Nome');
-  const [colorId, setColorId] = useState<string[]>(null)
+  const [name, setName] = useState<string>('');
+  const [colorId, setColorId] = useState<any | null>(null)
 
   const [result, setResult] = useState<CardResult | null>(null)
 
 
-  const handleFormSubmit = (data: Object) => {
+  const handleFormSubmit = (data: CardForm) => {
     setResult(data.result)
   };
 
@@ -67,18 +62,13 @@ export function Player() {
     setResult(null)
   }
 
-  const { register, handleSubmit, watch } = useForm<PlayerFormData>({
-    resolver: zodResolver(newPlayerFormValidationSchema),
-    defaultValues: {
-      playerName: '',
-    }
-  })
+  const handleInputChange = (event:any) => {
+    setName(event.target.value);
+  };
 
-  const disableSetPlayer = watch('playerName')
 
-  function handleAddNewPlayer() {
-    console.log('test');
-    
+  function handleAddNewPlayer() {    
+    setColorId(result?.color_identity)
   }
 
   return (
@@ -88,7 +78,7 @@ export function Player() {
 
           <Dialog.Root>
             <Dialog.Trigger asChild onClick={clearCards}>
-              <PlayerName>{name}</PlayerName>
+              <PlayerName>{name == '' ? 'Nome' : name}</PlayerName>
             </Dialog.Trigger>
 
             <Dialog.Portal>
@@ -106,7 +96,8 @@ export function Player() {
                   <PlayerInput
                     placeholder="Nome"
                     id="CardInput"
-                    {...register('playerName')}
+                    value={name} 
+                    onChange={handleInputChange}
                   />
 
                   <CardSearch onFormSubmit={handleFormSubmit} location="Home" />
@@ -138,8 +129,8 @@ export function Player() {
                     <button 
                       className="btn save" 
                       aria-label="Salvar" 
-                      disabled={!disableSetPlayer}
                       onClick={handleAddNewPlayer}
+                      disabled={!colorId && !name}
                     >
                       <FontAwesomeIcon icon={faFloppyDisk} />
                       Salvar
@@ -154,8 +145,7 @@ export function Player() {
             </Dialog.Portal>
           </Dialog.Root>
 
-
-          <ColorId />
+          {colorId != null && <ColorId colors={colorId}/>}
         </PlayerNameBox>
       </PlayerFrame>
 

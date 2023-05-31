@@ -22,6 +22,16 @@ export const GlobalCSS = createGlobalStyle`
     height: 100vh;
   }
 
+  a{
+    color: #1a004c;
+    text-decoration: none;
+    transition: all ease-in-out .4s;
+
+    &:hover{
+      opacity: .5
+    }
+  }
+
   // Botões
   .btn{
     ${shareDisabled}

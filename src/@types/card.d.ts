@@ -1,4 +1,6 @@
 export interface CardResult {
+  flavor_text: any;
+  scryfall_uri: string | undefined;
   id: string,
   name: string,
   lang: string,

@@ -1,3 +1,4 @@
+import React from 'react';
 import { useState } from 'react';
 
 import { Container } from "../global/Container";
@@ -79,8 +80,28 @@ export function Card() {
               </RuleInfo>
 
               {
-                result.oracle_text && <RuleText> {result.oracle_text.replace(/{/g, "").replace(/}/g, " ")}</RuleText>              
+                result.oracle_text && (
+                  <RuleText> 
+                    {
+                      result.oracle_text
+                        .replace(/{/g, "")
+                        .replace(/}/g, " ")
+                        .split('\n')
+                        .map((line, index) => (
+                          <React.Fragment key={index}>
+                            {line} <br /><br />
+                          </React.Fragment>
+                        ))
+                    }
+                  </RuleText>
+                )
+
               }
+              {result.flavor_text && (
+                <RuleText> 
+                  <i>{result.flavor_text}</i>
+                </RuleText>
+              )}
               
 
               {cardRules && cardRules.data && cardRules.data.length > 0 ? (
@@ -90,7 +111,7 @@ export function Card() {
                       Regras
                     </RuleText>
                     <RuleText>
-                      <small>Regras retiradas do Scryfall</small>
+                      <small>Regras retiradas do <a href={result.scryfall_uri} target='_blank'>Scryfall</a></small>
                     </RuleText>
                   </RuleInfo>
                   <RuleList>
