@@ -1,3 +1,5 @@
+import { ColorInterface } from "./colors";
+
 export interface CardResult {
   flavor_text: any;
   scryfall_uri: string | undefined;
@@ -12,7 +14,9 @@ export interface CardResult {
   mana_cost: string,
   cmc: number,
   type_line: string,
-  color_identity: string[],
+  color_identity: {
+    colors: string,
+  },
   rulings_uri: URL,
   power: number,
   toughness: number,

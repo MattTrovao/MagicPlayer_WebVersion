@@ -41,7 +41,7 @@ import { ColorInterface } from "../../@types/colors";
 export function Player() {
   const [life, setLife] = useState<number>(40);
   const [name, setName] = useState<string>('');
-  const [colorId, setColorId] = useState<any | null>(null)
+  const [colorId, setColorId] = useState<string[] | null>([]);
 
   const [result, setResult] = useState<CardResult | null>(null)
 
@@ -68,7 +68,7 @@ export function Player() {
 
 
   function handleAddNewPlayer() {    
-    setColorId(result?.color_identity)
+    setColorId(result?.color_identity ?? ['Colorless']);
   }
 
   return (
@@ -145,7 +145,7 @@ export function Player() {
             </Dialog.Portal>
           </Dialog.Root>
 
-          {colorId != null && <ColorId colors={colorId}/>}
+          {colorId && <ColorId colors={colorId} />}
         </PlayerNameBox>
       </PlayerFrame>
 

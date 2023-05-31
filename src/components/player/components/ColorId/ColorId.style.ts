@@ -13,10 +13,11 @@ export const IdBox = styled.div`
 `
 
 export const IdColor = styled.div`
-  width: 12px;
-  height: 12px;
+  width: 18px;
+  height: 18px;
   border-radius: 50%;
   background-color: ${props => props.theme.CARDS.COLORLESS};
+  border: 1px solid ${props => props.theme.COLORS.BLACK};
   ${shareTransition}
 
   &.W{ background-color: ${props => props.theme.CARDS.WHITE}; }

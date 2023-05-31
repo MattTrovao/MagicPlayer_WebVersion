@@ -11,7 +11,7 @@ export const PlayerBox = styled.div`
   &::before,
   &::after{
     content: '';
-    width: 10px;
+    width: 15px;
     height: 80%;
     display: block;
     background-color: ${props => props.theme.COLORS.TERTIARY};
@@ -42,7 +42,7 @@ export const PlayerNameBox = styled.div`
   padding: 5px 10px;
   text-transform: uppercase;
   font-weight: bold;
-  width: 95%;
+  width: 98%;
   position: absolute;
   background-color: ${props => props.theme.COLORS.WHITE};
   top: 50%;
