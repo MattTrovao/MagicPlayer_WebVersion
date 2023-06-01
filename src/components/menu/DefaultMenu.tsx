@@ -27,9 +27,6 @@ export function Menu() {
               <ReactSVG src={Random} />
             </Icon>
           </NavLink>
-          <Icon>
-            <ReactSVG src={New} />
-          </Icon>
         </MenuItens>
       </Container>
     </MenuBox>

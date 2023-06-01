@@ -3,7 +3,6 @@ import { IdBox, IdColor } from "./ColorId.style";
 
 
 export function ColorId({ colors }: ColorInterface){  
-  console.log(colors);
   
   return(
     <IdBox>

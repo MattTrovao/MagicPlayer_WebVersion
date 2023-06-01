@@ -37,7 +37,6 @@ import { CardForm, CardResult } from "../../@types/card";
 import { ColorInterface } from "../../@types/colors";
 
 
-
 export function Player() {
   const [life, setLife] = useState<number>(40);
   const [name, setName] = useState<string>('');

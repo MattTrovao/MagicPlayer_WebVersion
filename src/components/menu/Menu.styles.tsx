@@ -14,6 +14,8 @@ export const MenuItens = styled.nav`
   justify-content: space-between;
   align-items: center;
   gap: 1.5rem;
+  width: 65%;
+  margin: 0 auto;
 
   a.active{
     svg{

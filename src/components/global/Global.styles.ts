@@ -29,8 +29,8 @@ export const GlobalContainer = styled.section`
   display: flex;
   place-items: center;
   gap: .8rem;
-  width: 90vh;
-  max-width: 1280px;
+  max-width: calc(100vw - 20%);
+  width: 98%;
   margin: 0 auto;
 `
 export const GlobalRow = styled.div`
@@ -54,5 +54,5 @@ export const LabelTxt = styled.label`
   color: ${props => props.theme.COLORS.WHITE};
   font-size: ${props => props.theme.TEXT_SIZE.SM};
   margin: 10px 0;
-  display: inline-block
+  display: block;
 `

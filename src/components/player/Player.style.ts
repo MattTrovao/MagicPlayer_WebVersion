@@ -2,11 +2,10 @@ import styled from "styled-components";
 import { shareTransition } from "../global/Global.styles";
 
 export const PlayerBox = styled.div`
-  padding-top: 80px;
+  padding: 60px 0 20px;
   width: 100%;
   background-color: ${props => props.theme.COLORS.PRIMARY};
   position: relative;
-  min-height: 400px;
 
   &::before,
   &::after{
@@ -42,7 +41,7 @@ export const PlayerNameBox = styled.div`
   padding: 5px 10px;
   text-transform: uppercase;
   font-weight: bold;
-  width: 98%;
+  width: 94%;
   position: absolute;
   background-color: ${props => props.theme.COLORS.WHITE};
   top: 50%;
