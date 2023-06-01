@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { useForm } from "react-hook-form";
 
 
@@ -37,8 +37,21 @@ import { CardForm, CardResult } from "../../@types/card";
 import { ColorInterface } from "../../@types/colors";
 
 
-export function Player() {
-  const [life, setLife] = useState<number>(40);
+export function Player({ initialLife }: { initialLife: number;}) {
+  const [life, setLife] = useState<number>(initialLife);
+
+  useEffect(() => {
+    const storedLife = localStorage.getItem('PlayersLife');
+    
+    if (storedLife !== null) {
+      const parsedLife = parseInt(storedLife);
+      if (parsedLife != life) {
+        setLife(parsedLife);
+      }      
+    }
+  }, [localStorage.getItem('PlayersLife')]);
+  
+  
   const [name, setName] = useState<string>('');
   const [colorId, setColorId] = useState<string[] | null>([]);
 
@@ -61,12 +74,11 @@ export function Player() {
     setResult(null)
   }
 
-  const handleInputChange = (event:any) => {
+  const handleInputChange = (event: any) => {
     setName(event.target.value);
   };
 
-
-  function handleAddNewPlayer() {    
+  function handleAddNewPlayer() {
     setColorId(result?.color_identity ?? ['Colorless']);
   }
 
@@ -95,7 +107,7 @@ export function Player() {
                   <PlayerInput
                     placeholder="Nome"
                     id="CardInput"
-                    value={name} 
+                    value={name}
                     onChange={handleInputChange}
                   />
 
@@ -125,9 +137,9 @@ export function Player() {
 
                 <Dialog.Close asChild>
                   <div className="DialogContent__btn" >
-                    <button 
-                      className="btn save" 
-                      aria-label="Salvar" 
+                    <button
+                      className="btn save"
+                      aria-label="Salvar"
                       onClick={handleAddNewPlayer}
                       disabled={!colorId && !name}
                     >

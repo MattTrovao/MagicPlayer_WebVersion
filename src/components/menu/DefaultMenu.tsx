@@ -1,7 +1,7 @@
 import Game from '../../assets/Menu/Game.svg'
 import Search from '../../assets/Menu/Search.svg'
 import Random from '../../assets/Menu/Random.svg'
-import New from '../../assets/Menu/New.svg'
+import Info from '../../assets/Menu/Info.svg'
 import { Icon, MenuBox, MenuItens } from './Menu.styles'
 import { Container } from '../global/Container'
 import { ReactSVG } from 'react-svg'
@@ -25,6 +25,11 @@ export function Menu() {
           <NavLink to="/randomizers" title='Randomizador'>
             <Icon>
               <ReactSVG src={Random} />
+            </Icon>
+          </NavLink>
+          <NavLink to="/information" title='Informações'>
+            <Icon>
+              <ReactSVG src={Info} />
             </Icon>
           </NavLink>
         </MenuItens>

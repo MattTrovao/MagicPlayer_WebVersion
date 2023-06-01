@@ -11,18 +11,27 @@ import { PlayerName } from '../../components/player/Player.style'
 import { Label } from '../../components/global/Label'
 
 
-export function Home() {
-  const [PlayersNum, SetPlayersNumber] = useState<number>(2)
+export default function Home() {
+  const [life, setLife] = useState<number>(() => {
+    const storedLife = localStorage.getItem('PlayersLife');
+    const initialLife = storedLife !== null ? parseInt(storedLife) : 40;
+    return initialLife;
+  });
+
+  const [PlayersNum, SetPlayersNumber] = useState<number>(() => {
+    const storedPlayers = localStorage.getItem('TotalOfPlayers');
+    const initialPlayers = storedPlayers !== null ? parseInt(storedPlayers) : 2;
+    return initialPlayers;
+  });
   
   function setPlayerNumber(total:number){
     localStorage.setItem('TotalOfPlayers', total.toString())
+    SetPlayersNumber(total)
+
   }
   function setPlayerLife(total:number){
     localStorage.setItem('PlayersLife', total.toString())
-  }
-
-  function SavePlayerData() {
-    SetPlayersNumber(localStorage.getItem('TotalOfPlayers'))
+    setLife(total)
   }
 
   return (
@@ -33,7 +42,7 @@ export function Home() {
           data-position={`position--${index}`}
           className='setPlayer'
         >
-          <Player />
+          <Player initialLife={life} />
         </HomePosition>
       ))}
 
@@ -84,14 +93,6 @@ export function Home() {
 
               <Dialog.Close asChild>
                 <div className="DialogContent__btn" >
-                  <button
-                    className="btn save"
-                    aria-label="Salvar"
-                    onClick={() => SavePlayerData()}
-                  >
-                    <FontAwesomeIcon icon={faFloppyDisk} />
-                    Salvar
-                  </button>
                   <button className="btn close" aria-label="Fechar">
                     <FontAwesomeIcon icon={faX} />
                     Fechar
