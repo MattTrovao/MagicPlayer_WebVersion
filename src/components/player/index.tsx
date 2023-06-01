@@ -34,11 +34,11 @@ import {
 } from "../card/Card.styles";
 
 import { CardForm, CardResult } from "../../@types/card";
-import { ColorInterface } from "../../@types/colors";
-
 
 export function Player({ initialLife }: { initialLife: number;}) {
   const [life, setLife] = useState<number>(initialLife);
+  console.log('default',life);
+  
 
   useEffect(() => {
     const storedLife = localStorage.getItem('PlayersLife');
@@ -49,6 +49,8 @@ export function Player({ initialLife }: { initialLife: number;}) {
         setLife(parsedLife);
       }      
     }
+    console.log('newlife',life);
+    
   }, [localStorage.getItem('PlayersLife')]);
   
   

@@ -29,8 +29,8 @@ export const GlobalContainer = styled.section`
   display: flex;
   place-items: center;
   gap: .8rem;
-  max-width: calc(100vw - 20%);
-  width: 98%;
+  max-width: 85vw;
+  width: 90%;
   margin: 0 auto;
 `
 export const GlobalRow = styled.div`

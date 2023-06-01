@@ -20,10 +20,10 @@ export const randomizerAnimation = css`
 
   @keyframes coinRotate{
     0%,100%{
-      transform: rotate(-360deg) scale(.95);
+      transform: rotate(-360deg);
     }
     50%{
-      transform: rotate(360deg) scale(1);
+      transform: rotate(360deg);
     }
   }
 `

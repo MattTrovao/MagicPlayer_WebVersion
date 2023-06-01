@@ -10,8 +10,8 @@ export const DiceContent = styled.div`
   justify-content: center;
   align-items: center;
   position: relative;
-  width: 165px;
-  height: 165px;
+  width: 320px;
+  height: 320px;
   margin: 0 auto;
 `
 
@@ -27,24 +27,26 @@ export const DiceImg = styled(ReactSVG)`
   }
 
   &[data-animated=true]{
+    cursor: not-allowed;
+
+    &[data-dice='d4']{
+      svg{
+        animation: dicePulse 1.5s ease-in-out;
+      }
+    }
     svg{
       ${randomizerAnimation}
     }
   }
 
-  &[data-dice='d4']{
-    svg{
-      animation: dicePulse 1s ease-in-out;
-    }
-  }
 
   @keyframes dicePulse{
     0%,100%{
-      transform: scale(.75);
+      transform: skewX(-15deg) skewY(15deg);
       opacity: .8;
     }
     50%{
-      transform: scale(1);
+      transform: skewX(15deg) skewY(-15deg);
       opacity: 1;
     }
   }

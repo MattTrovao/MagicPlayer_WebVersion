@@ -3,7 +3,7 @@ import styled from "styled-components";
 export const MenuBox = styled.footer`
   width: 100vw;
   background-color: ${props => props.theme.COLORS.BLACK};
-  border-top: 1px solid ${props => props.theme.COLORS.WHITE};
+  border-top: 2px solid ${props => props.theme.COLORS.WHITE};
   height: 60px;
   display: flex;
   justify-content: center;

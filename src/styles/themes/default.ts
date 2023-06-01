@@ -41,7 +41,7 @@ export const theme = {
     SM: '18px',
     MD: '26px',
     XL: '36px',
-    DICE: '60px',
+    DICE: '50px',
     PL: '160px',
   },
 }

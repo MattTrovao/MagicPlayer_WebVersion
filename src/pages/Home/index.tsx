@@ -23,15 +23,28 @@ export default function Home() {
     const initialPlayers = storedPlayers !== null ? parseInt(storedPlayers) : 2;
     return initialPlayers;
   });
-  
-  function setPlayerNumber(total:number){
+
+  function setPlayerNumber(total: number) {
     localStorage.setItem('TotalOfPlayers', total.toString())
     SetPlayersNumber(total)
 
   }
-  function setPlayerLife(total:number){
+  function setPlayerLife(total: number) {
     localStorage.setItem('PlayersLife', total.toString())
     setLife(total)
+  }
+
+  function resetLife() {
+    const storedLife = localStorage.getItem('PlayersLife');
+    localStorage.setItem('PlayersLife', '0')
+    setTimeout(() => {
+      const resetValue = storedLife !== null ? parseInt(storedLife) : 40;
+      setLife(resetValue);
+      localStorage.setItem('PlayersLife', resetValue.toString())
+    }, 500);
+
+    console.log(life);
+
   }
 
   return (
@@ -47,7 +60,7 @@ export default function Home() {
       ))}
 
       <HomeMenu>
-        <HomeMenuIcon>
+        <HomeMenuIcon onClick={() => resetLife()}>
           <FontAwesomeIcon icon={faArrowsRotate} />
         </HomeMenuIcon>
 
