@@ -12,7 +12,7 @@
 
 - [ ] Códificação das interfaces Web
   - [x] Codificação da interface de busca de carta
-  - [ ] Codificação da interface de jogadores
+  - [x] Codificação da interface de jogadores
   - [x] Codificação da interface de randomizadores (dados e moedas)
   - [ ] Revisão e ajustes nos códigos
 
@@ -21,6 +21,14 @@
   - [ ] Codificação da interface de jogadores
   - [ ] Codificação da interface de randomizadores (dados e moedas)
   - [ ] Revisão e ajustes nos códigos
+
+---
+
+# Melhorias
+
+- [ ] Opção de adicionar 2 comandantes (Partner, Background, Friends Forever)
+- [ ] Opção de adicionar companion
+- [ ] Renderização da busca para cartas de duas faces
 
 ---
 
@@ -75,3 +83,15 @@ Como o projeto é feito para estudo e aumento de portfólio foi decidido criar u
   - Dialog v1.0.3
   - Select v1.2.1
   - Tabs v1.0.3
+
+## Instalção de Dependencias
+
+```sh
+npm install
+```
+
+### Servidor para Desenvolvimento
+
+```sh
+npm run dev
+```
