@@ -1,37 +1,3 @@
-# Itens a serem desenvolvidos
-
-- [x] Pesquisa de referências
-
-- [x] Fluxograma
-
-- [x] Wireframe
-
-- [x] Revisão etaps anteriores
-
-- [x] Criação do Layout e Logo
-
-- [ ] Códificação das interfaces Web
-  - [x] Codificação da interface de busca de carta
-  - [x] Codificação da interface de jogadores
-  - [x] Codificação da interface de randomizadores (dados e moedas)
-  - [ ] Revisão e ajustes nos códigos
-
-- [ ] Códificação das interfaces Mobile
-  - [ ] Codificação da interface de busca de carta
-  - [ ] Codificação da interface de jogadores
-  - [ ] Codificação da interface de randomizadores (dados e moedas)
-  - [ ] Revisão e ajustes nos códigos
-
----
-
-# Melhorias
-
-- [ ] Opção de adicionar 2 comandantes (Partner, Background, Friends Forever)
-- [ ] Opção de adicionar companion
-- [ ] Renderização da busca para cartas de duas faces
-
----
-
 # Magic Player
 
 Aplicativo desenvolvido para jogadores de Magic The Gathering, que ajuda a controlar a contagem de vida e marcadores durante as partidas. 
