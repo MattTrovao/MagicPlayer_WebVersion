@@ -35,25 +35,30 @@ import {
 
 import { CardForm, CardResult } from "../../@types/card";
 
-export function Player({ initialLife }: { initialLife: number;}) {
+export function Player({ initialLife, resetLife }: { initialLife: number, resetLife: number }) {
   const [life, setLife] = useState<number>(initialLife);
-  console.log('default',life);
-  
+  const maxLife = 9000;
 
-  useEffect(() => {
+  function setNewLife() {
     const storedLife = localStorage.getItem('PlayersLife');
-    
+
     if (storedLife !== null) {
       const parsedLife = parseInt(storedLife);
       if (parsedLife != life) {
         setLife(parsedLife);
-      }      
+      }
     }
-    console.log('newlife',life);
-    
+  }
+
+  useEffect(() => {
+    setNewLife()
   }, [localStorage.getItem('PlayersLife')]);
-  
-  
+
+  useEffect(() => {
+    setNewLife()
+  }, [resetLife])
+
+
   const [name, setName] = useState<string>('');
   const [colorId, setColorId] = useState<string[] | null>([]);
 
@@ -65,7 +70,9 @@ export function Player({ initialLife }: { initialLife: number;}) {
   };
 
   function addLife(total: number) {
-    setLife(Number(life) + total);
+    if (life < maxLife) {
+      setLife(Number(life) + total);
+    }
   }
 
   function removedLife(total: number) {
@@ -166,10 +173,12 @@ export function Player({ initialLife }: { initialLife: number;}) {
         <Markers></Markers>
 
         <Life>
-          <LifeBtnBox data-place="top">
-            <LifeAdd onClick={() => addLife(1)}>+1</LifeAdd>
-            <LifeAdd onClick={() => addLife(10)}>+10</LifeAdd>
-          </LifeBtnBox>
+          {life < maxLife && (
+            <LifeBtnBox data-place="top">
+              <LifeAdd onClick={() => addLife(1)}>+1</LifeAdd>
+              <LifeAdd onClick={() => addLife(10)}>+10</LifeAdd>
+            </LifeBtnBox>
+          )}
 
           <LifeValue>
             {life}

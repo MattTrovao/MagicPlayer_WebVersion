@@ -18,6 +18,8 @@ export default function Home() {
     return initialLife;
   });
 
+  const [resetGame, setResetGame] = useState<boolean>(false)
+
   const [PlayersNum, SetPlayersNumber] = useState<number>(() => {
     const storedPlayers = localStorage.getItem('TotalOfPlayers');
     const initialPlayers = storedPlayers !== null ? parseInt(storedPlayers) : 2;
@@ -35,16 +37,13 @@ export default function Home() {
   }
 
   function resetLife() {
+    setLife(0)
     const storedLife = localStorage.getItem('PlayersLife');
-    localStorage.setItem('PlayersLife', '0')
     setTimeout(() => {
       const resetValue = storedLife !== null ? parseInt(storedLife) : 40;
       setLife(resetValue);
       localStorage.setItem('PlayersLife', resetValue.toString())
     }, 500);
-
-    console.log(life);
-
   }
 
   return (
@@ -55,7 +54,7 @@ export default function Home() {
           data-position={`position--${index}`}
           className='setPlayer'
         >
-          <Player initialLife={life} />
+          <Player initialLife={life} resetLife={life} />
         </HomePosition>
       ))}
 
