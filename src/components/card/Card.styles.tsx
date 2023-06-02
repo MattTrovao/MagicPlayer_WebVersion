@@ -101,11 +101,18 @@ export const NameContainer = styled.div`
     font-size: ${props => props.theme.TEXT_SIZE.MD};
   }
 `
+
 export const ResultImgBox = styled.div`
   display: flex;
   justify-content: space-between;
   flex-direction: column;
   gap: 0.5rem;
+`
+
+export const ResultCardFace = styled.div`
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
 `
 
 export const ResultImg = styled.img`
@@ -143,6 +150,16 @@ export const RuleInfo = styled.div`
   font-weight: bold;
   color: ${props => props.theme.COLORS.WHITE};
 }
+`
+
+export const Divider = styled.span`
+  background: ${props => props.theme.COLORS.PRIMARY};
+  margin: 0 0 1rem;
+  border: none;
+  width: 100%;
+  height: 2px;
+  display: block;
+  border-radius: 2px;
 `
 
 export const RuleText = styled.p`

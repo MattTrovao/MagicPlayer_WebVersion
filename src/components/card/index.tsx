@@ -13,20 +13,25 @@ import {
   RuleInfo,
   ResultCaption,
   ResultImgBox,
+  ResultCardFace,
+  Divider,
 } from "./Card.styles";
 
 import { formatDate } from '../../utils/format';
 import { CardSearch } from './CardSearch';
 
-import { CardResult, CardRules, CardForm, CardRuleData } from '../../@types/card';
+import { CardResult, CardRules, CardForm, CardRuleData, CardFace, CardFaceMap } from '../../@types/card';
 
 
 export function Card() {
   const [result, setResult] = useState<CardResult | null>(null)
+  const [cardFace, setCardFace] = useState<CardFace | null>(null)
   const [cardRules, setCardRules] = useState<CardRules | null>(null);
 
   const handleFormSubmit = (data: CardForm) => {
     setResult(data.result)
+
+
     setCardRules(prevState => ({
       ...prevState,
       data: data.rules,
@@ -36,6 +41,11 @@ export function Card() {
         return <div key={index}>{rule.comment}</div>;
       }
     }));
+
+    if (data.result.card_faces) {
+      setCardFace(data.result.card_faces)
+      console.log(data.result.card_faces);
+    }
   };
 
   return (
@@ -54,12 +64,34 @@ export function Card() {
                 {result?.mana_cost && (
                   <h2>{result.mana_cost.replace(/{/g, "").replace(/}/g, " ")}</h2>
                 )}
+
+                {cardFace?.mana_cost && (
+                  <h2>
+                    {cardFace.map((data: CardFace, index: number) => (
+                      <React.Fragment key={index}>
+                        {data.mana_cost.replace(/{/g, "").replace(/}/g, " ")}
+                        {index == 0 && ' // '}
+                      </React.Fragment>
+                    ))}
+                  </h2>
+                )}
               </NameContainer>
 
               {result.image_uris && (
                 <ResultImgBox>
                   <ResultImg src={result.image_uris.art_crop} />
                   <ResultCaption>Artista: <b>{result.artist}</b></ResultCaption>
+                </ResultImgBox>
+              )}
+
+              {cardFace && (
+                <ResultImgBox className='cardFace'>
+                  <ResultCardFace>
+                    {cardFace.map((data: CardFace, index: number) => (
+                      <ResultImg key={index} src={data.image_uris.art_crop} />
+                    ))}
+                  </ResultCardFace>
+                  <ResultCaption>Artista: <b>{cardFace[0].artist}</b></ResultCaption>
                 </ResultImgBox>
               )}
 
@@ -76,12 +108,31 @@ export function Card() {
                         result.loyalty
                         : ''
                   }
+
+                  {
+                    cardFace &&
+                    cardFace.map((data: CardFace, index: number) => (
+                      <React.Fragment key={index}>
+                        {
+                          data.power ?
+                            data.power + '/' + data.toughness
+                            : data.loyalty ?
+                              data.loyalty
+                              : ''
+                        }
+                        {
+                          index == 0 && (data.power || data.loyalty)
+                            ? ' // ' : ''
+                        }
+                      </React.Fragment>
+                    ))
+                  }
                 </RuleText>
               </RuleInfo>
 
               {
                 result.oracle_text && (
-                  <RuleText> 
+                  <RuleText>
                     {
                       result.oracle_text
                         .replace(/{/g, "")
@@ -95,14 +146,40 @@ export function Card() {
                     }
                   </RuleText>
                 )
-
               }
               {result.flavor_text && (
-                <RuleText> 
+                <RuleText>
                   <i>{result.flavor_text}</i>
                 </RuleText>
               )}
-              
+
+              {cardFace && (
+                <RuleText>
+                  {cardFace.map((data: CardFace, index: number) => (
+                    <React.Fragment key={index}>
+                      {
+                        data.oracle_text
+                          .replace(/{/g, "")
+                          .replace(/}/g, " ")
+                          .split('\n')
+                          .map((line, index) => (
+                            <React.Fragment key={index}>
+                              {line} <br /><br />
+                            </React.Fragment>
+                          ))
+                      }
+
+                      {data.flavor_text && (
+                        <i>{data.flavor_text}</i>
+                      )}
+
+                      {index == 0 && <Divider />}
+                    </React.Fragment>
+
+                  ))}
+                </RuleText>
+              )}
+
 
               {cardRules && cardRules.data && cardRules.data.length > 0 ? (
                 <>
@@ -124,7 +201,7 @@ export function Card() {
                       </RuleText>
                     ))}
 
-                    
+
                   </RuleList>
                 </>
               ) : (
