@@ -1,6 +1,7 @@
 # Magic Player
 
 Aplicativo desenvolvido para jogadores de Magic The Gathering, que ajuda a controlar a contagem de vida e marcadores durante as partidas. 
+
 [Versão Web](https://magicplayer-web.vercel.app/)
 
 ## Etapas
