@@ -28,11 +28,12 @@ import {
   NameContainer,
   ResultBox,
   ResultCaption,
+  ResultCardFace,
   ResultImg,
   ResultImgBox,
 } from "../card/Card.styles";
 
-import { CardForm, CardResult } from "../../@types/card";
+import { CardFace, CardForm, CardResult } from "../../@types/card";
 
 export function Player({ initialLife, resetLife }: { initialLife: number, resetLife: number }) {
   const [life, setLife] = useState<number>(initialLife);
@@ -107,7 +108,7 @@ export function Player({ initialLife, resetLife }: { initialLife: number, resetL
                     placeholder="Nome"
                     id="CardInput"
                     value={name}
-                    onChange={(e)=> setName(e.target.value)}
+                    onChange={(e) => setName(e.target.value)}
                   />
 
                   <CardSearch onFormSubmit={handleFormSubmit} location="Home" />
@@ -127,6 +128,17 @@ export function Player({ initialLife, resetLife }: { initialLife: number, resetL
                         <ResultImgBox>
                           <ResultImg src={result.image_uris.art_crop} className="small" />
                           <ResultCaption>Artista: <b>{result.artist}</b></ResultCaption>
+                        </ResultImgBox>
+                      )}
+
+                      {result?.card_faces && result.card_faces && (
+                        <ResultImgBox className='cardFace'>
+                          <ResultCardFace>
+                            {result.card_faces.map((data: CardFace, index: number) => (
+                              <ResultImg key={index} src={data.image_uris.art_crop} />
+                            ))}
+                          </ResultCardFace>
+                          <ResultCaption>Artista: <b>{result.card_faces[0].artist}</b></ResultCaption>
                         </ResultImgBox>
                       )}
                     </ResultBox>
