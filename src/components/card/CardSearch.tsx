@@ -6,7 +6,6 @@ import * as zod from 'zod'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
 
-import { Container } from "../global/Container";
 import { Label } from "../global/Label";
 import {
   CardBox,

@@ -9,6 +9,21 @@ export const GlobalCSS = createGlobalStyle`
     box-sizing: border-box
   }
 
+  html,body{
+    font-size: 14px;
+  }
+
+  @media screen and (max-width: 992px) {
+    html,body{
+    font-size: 10px;
+    }
+  }
+  @media screen and (max-width: 576px) {
+    html,body{
+    font-size: 9px;
+    }
+  }
+
   body {
     margin: 0;
     background-color: ${props => props.theme.COLORS.BLACK};
@@ -85,13 +100,13 @@ export const GlobalCSS = createGlobalStyle`
 
   // Radix Dialog
   .DialogOverlay{
-    width: 100vw;
-    height: 100vh;
+    width: 100%;
+    height: 100%;
     position: fixed;
     inset: 0;
     background: rgba(0,0,0, .5);
     transition: all .4s ease-in-out;
-    z-index: 9999;
+    z-index: 99;
   }
 
   .DialogContent{
@@ -107,7 +122,7 @@ export const GlobalCSS = createGlobalStyle`
     flex-direction: column;
     gap: 1rem;
     width: 50vw;
-    z-index: 99999;
+    z-index: 100;
 
     .DialogContent__title{
       color: ${props => props.theme.COLORS.WHITE};

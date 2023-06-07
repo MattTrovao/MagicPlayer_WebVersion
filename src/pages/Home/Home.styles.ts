@@ -1,10 +1,21 @@
 import styled from "styled-components";
 import { shareTransition } from "../../components/global/Global.styles";
 
+export const PageHome = styled.main`
+  width: 100%;
+  height: calc( 100vh - 60px);
+  overflow: hidden;
+  @media screen and (max-width: 992px) {
+    transform: rotate(90deg);
+    width: calc(100vh - 70px);
+    height: 100vh;
+  }
+`
+
 export const HomeGrid = styled.section`
   display: grid;
-  row-gap: 4rem;
-  column-gap: 2rem;
+  gap: 2rem;
+  height: 100%;
 
   &[data-players="total--2"]{
     grid-template-rows: repeat(2, 1fr);
@@ -88,6 +99,15 @@ export const HomeMenu = styled.nav`
   display: flex;
   justify-content: center;
   gap: 5rem;
+
+
+  @media screen and (max-width: 1300px) {
+    top: 46%;
+  }
+
+  @media screen and (max-width: 992px) {
+    top: 47.5%;
+  }
 `
 
 export const HomeMenuIcon = styled.button`
@@ -95,8 +115,8 @@ export const HomeMenuIcon = styled.button`
   border: 2px solid ${props => props.theme.COLORS.PRIMARY};
   background: transparent;
   border-radius: 10px;
-  width: 2.5rem;
-  height: 2.5rem;
+  width: 30px;
+  height: 30px;
   position: relative;
 
   &:hover{
@@ -121,6 +141,10 @@ export const PlayersBtns = styled.div`
   display: flex;
   justify-content: center;
   gap: 1rem;
+
+  @media screen and (max-width: 992px) {
+    gap: .5rem;
+  }
 `
 
 export const TotalPlayers = styled.button`
@@ -138,5 +162,10 @@ export const TotalPlayers = styled.button`
   
   &:hover{
     color: ${props => props.theme.COLORS.SECONDARY};
+  }
+
+  @media screen and (max-width: 992px) {
+    width: 50px;
+    height: 50px;
   }
 `

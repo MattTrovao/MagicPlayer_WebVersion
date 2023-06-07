@@ -32,6 +32,22 @@ export const GlobalContainer = styled.section`
   max-width: 85vw;
   width: 90%;
   margin: 0 auto;
+  overflow: auto;
+  max-height: calc(100vh - 80px);
+
+  &::-webkit-scrollbar {
+    width: 4px;
+    height: 6px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: ${props => props.theme.COLORS.WHITE};
+    border-radius: 10px;
+  }
 `
 export const GlobalRow = styled.div`
   width: 90%;

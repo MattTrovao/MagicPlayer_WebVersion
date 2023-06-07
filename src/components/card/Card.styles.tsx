@@ -65,18 +65,18 @@ export const ResultBox = styled.section`
   overflow: auto;
 
   &::-webkit-scrollbar {
-  width: 8px;
-  height: 6px;
-}
+    width: 5px;
+    height: 2px;
+  }
 
-&::-webkit-scrollbar-track {
-  background: transparent;
-}
+  &::-webkit-scrollbar-track {
+    background: transparent;
+  }
 
-&::-webkit-scrollbar-thumb {
-  background: ${props => props.theme.COLORS.PRIMARY};
-  border-radius: 10px;
-}
+  &::-webkit-scrollbar-thumb {
+    background: ${props => props.theme.COLORS.PRIMARY};
+    border-radius: 10px;
+  }
 `
 
 export const RuleError = styled.h1`
@@ -146,10 +146,15 @@ export const RuleInfo = styled.div`
   border-radius: inherit;
   padding: 5px 5px;
 
-& > p {
-  font-weight: bold;
-  color: ${props => props.theme.COLORS.WHITE};
-}
+  & > p {
+    font-weight: bold;
+    color: ${props => props.theme.COLORS.WHITE};
+  }
+
+  @media screen and (max-width: 992px) {
+    display: block;
+    text-align: center;
+  }
 `
 
 export const Divider = styled.span`

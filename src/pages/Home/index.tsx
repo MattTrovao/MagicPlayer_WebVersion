@@ -2,7 +2,7 @@ import { useState } from 'react'
 
 import { Player } from '../../components/player'
 
-import { HomeGrid, HomeMenu, HomeMenuIcon, HomePosition, PlayersBtns, TotalPlayers } from './Home.styles'
+import { HomeGrid, HomeMenu, HomeMenuIcon, HomePosition, PageHome, PlayersBtns, TotalPlayers } from './Home.styles'
 import { faArrowsRotate, faFloppyDisk, faUserGroup, faX } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
@@ -18,7 +18,6 @@ export default function Home() {
     return initialLife;
   });
 
-  const [resetGame, setResetGame] = useState<boolean>(false)
 
   const [PlayersNum, SetPlayersNumber] = useState<number>(() => {
     const storedPlayers = localStorage.getItem('TotalOfPlayers');
@@ -47,74 +46,76 @@ export default function Home() {
   }
 
   return (
-    <HomeGrid data-players={`total--${PlayersNum}`}>
-      {Array.from({ length: PlayersNum }, (_, index) => (
-        <HomePosition
-          key={index}
-          data-position={`position--${index}`}
-          className='setPlayer'
-        >
-          <Player initialLife={life} resetLife={life} />
-        </HomePosition>
-      ))}
+    <PageHome>
+      <HomeGrid data-players={`total--${PlayersNum}`}>
+        {Array.from({ length: PlayersNum }, (_, index) => (
+          <HomePosition
+            key={index}
+            data-position={`position--${index}`}
+            className='setPlayer'
+          >
+            <Player initialLife={life} resetLife={life} />
+          </HomePosition>
+        ))}
 
-      <HomeMenu>
-        <HomeMenuIcon onClick={() => resetLife()}>
-          <FontAwesomeIcon icon={faArrowsRotate} />
-        </HomeMenuIcon>
+        <HomeMenu>
+          <HomeMenuIcon onClick={() => resetLife()}>
+            <FontAwesomeIcon icon={faArrowsRotate} />
+          </HomeMenuIcon>
 
 
 
-        <Dialog.Root>
-          <Dialog.Trigger asChild >
-            <HomeMenuIcon>
-              <FontAwesomeIcon icon={faUserGroup} />
-            </HomeMenuIcon>
-          </Dialog.Trigger>
+          <Dialog.Root>
+            <Dialog.Trigger asChild >
+              <HomeMenuIcon>
+                <FontAwesomeIcon icon={faUserGroup} />
+              </HomeMenuIcon>
+            </Dialog.Trigger>
 
-          <Dialog.Portal>
-            <Dialog.Overlay className="DialogOverlay" />
+            <Dialog.Portal>
+              <Dialog.Overlay className="DialogOverlay" />
 
-            <Dialog.Content className="DialogContent">
-              <Dialog.Title className="DialogContent__title">
-                Jogadores
-              </Dialog.Title>
+              <Dialog.Content className="DialogContent">
+                <Dialog.Title className="DialogContent__title">
+                  Jogadores
+                </Dialog.Title>
 
-              <div className="DialogContent__body">
-                <div className="contentHolder">
-                  <Label>Total de Jogadores</Label>
-                  <PlayersBtns>
-                    <TotalPlayers onClick={() => setPlayerNumber(2)}>2</TotalPlayers>
-                    <TotalPlayers onClick={() => setPlayerNumber(3)}>3</TotalPlayers>
-                    <TotalPlayers onClick={() => setPlayerNumber(4)}>4</TotalPlayers>
-                    <TotalPlayers onClick={() => setPlayerNumber(5)}>5</TotalPlayers>
-                    <TotalPlayers onClick={() => setPlayerNumber(6)}>6</TotalPlayers>
-                  </PlayersBtns>
+                <div className="DialogContent__body">
+                  <div className="contentHolder">
+                    <Label>Total de Jogadores</Label>
+                    <PlayersBtns>
+                      <TotalPlayers onClick={() => setPlayerNumber(2)}>2</TotalPlayers>
+                      <TotalPlayers onClick={() => setPlayerNumber(3)}>3</TotalPlayers>
+                      <TotalPlayers onClick={() => setPlayerNumber(4)}>4</TotalPlayers>
+                      <TotalPlayers onClick={() => setPlayerNumber(5)}>5</TotalPlayers>
+                      <TotalPlayers onClick={() => setPlayerNumber(6)}>6</TotalPlayers>
+                    </PlayersBtns>
+                  </div>
+
+                  <div className="mt-2">
+                    <Label>Vida Inicial</Label>
+                    <PlayersBtns>
+                      <TotalPlayers onClick={() => setPlayerLife(20)}>20</TotalPlayers>
+                      <TotalPlayers onClick={() => setPlayerLife(25)}>25</TotalPlayers>
+                      <TotalPlayers onClick={() => setPlayerLife(30)}>30</TotalPlayers>
+                      <TotalPlayers onClick={() => setPlayerLife(40)}>40</TotalPlayers>
+                    </PlayersBtns>
+                  </div>
                 </div>
 
-                <div className="mt-2">
-                  <Label>Vida Inicial</Label>
-                  <PlayersBtns>
-                    <TotalPlayers onClick={() => setPlayerLife(20)}>20</TotalPlayers>
-                    <TotalPlayers onClick={() => setPlayerLife(25)}>25</TotalPlayers>
-                    <TotalPlayers onClick={() => setPlayerLife(30)}>30</TotalPlayers>
-                    <TotalPlayers onClick={() => setPlayerLife(40)}>40</TotalPlayers>
-                  </PlayersBtns>
-                </div>
-              </div>
-
-              <Dialog.Close asChild>
-                <div className="DialogContent__btn" >
-                  <button className="btn close" aria-label="Fechar">
-                    <FontAwesomeIcon icon={faX} />
-                    Fechar
-                  </button>
-                </div>
-              </Dialog.Close>
-            </Dialog.Content>
-          </Dialog.Portal>
-        </Dialog.Root>
-      </HomeMenu>
-    </HomeGrid>
+                <Dialog.Close asChild>
+                  <div className="DialogContent__btn" >
+                    <button className="btn close" aria-label="Fechar">
+                      <FontAwesomeIcon icon={faX} />
+                      Fechar
+                    </button>
+                  </div>
+                </Dialog.Close>
+              </Dialog.Content>
+            </Dialog.Portal>
+          </Dialog.Root>
+        </HomeMenu>
+      </HomeGrid>
+    </PageHome>
   )
 }

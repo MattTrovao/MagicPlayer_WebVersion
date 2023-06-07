@@ -2,7 +2,7 @@ import styled from "styled-components";
 import { shareTransition } from "../global/Global.styles";
 
 export const PlayerBox = styled.div`
-  padding: 60px 0 20px;
+  padding: 60px 0 0;
   width: 100%;
   height: 100%;
   background-color: ${props => props.theme.COLORS.PRIMARY};
@@ -92,6 +92,10 @@ export const Life = styled.div`
   width: 30%;
   max-width: 500px;
   margin: 0 auto;
+
+  @media screen and (max-width: 992px) {
+    width: 20%;
+  }
 `
 
 export const LifeValue = styled.h2`
@@ -134,6 +138,11 @@ const LifeBtn = styled.button`
   cursor: pointer;
   width: 100%;
   margin: 0 auto;
+
+  @media screen and (max-width: 992px) {
+    width: 47px;
+    height: 47px;
+  }
 `
 export const LifeAdd = styled(LifeBtn)`
   background: ${props => props.theme.COLORS.SUCCESS};

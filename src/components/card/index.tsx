@@ -20,16 +20,15 @@ import {
 import { formatDate } from '../../utils/format';
 import { CardSearch } from './CardSearch';
 
-import { CardResult, CardRules, CardForm, CardRuleData, CardFace, CardFaceMap } from '../../@types/card';
+import { CardResult, CardRules, CardForm, CardRuleData, CardFace } from '../../@types/card';
 
 
 export function Card() {
   const [result, setResult] = useState<CardResult | null>(null)
-  const [cardFace, setCardFace] = useState<CardFace | null>(null)
   const [cardRules, setCardRules] = useState<CardRules | null>(null);
 
   const handleFormSubmit = (data: CardForm) => {
-    setResult(data.result)
+    setResult(data.result)    
 
 
     setCardRules(prevState => ({
@@ -42,10 +41,6 @@ export function Card() {
       }
     }));
 
-    if (data.result.card_faces) {
-      setCardFace(data.result.card_faces)
-      console.log(data.result.card_faces);
-    }
   };
 
   return (
@@ -65,9 +60,9 @@ export function Card() {
                   <h2>{result.mana_cost.replace(/{/g, "").replace(/}/g, " ")}</h2>
                 )}
 
-                {cardFace?.mana_cost && (
+                {result.card_faces[0]?.mana_cost && (
                   <h2>
-                    {cardFace.map((data: CardFace, index: number) => (
+                    {result.card_faces.map((data: CardFace, index: number) => (
                       <React.Fragment key={index}>
                         {data.mana_cost.replace(/{/g, "").replace(/}/g, " ")}
                         {index == 0 && ' // '}
@@ -84,14 +79,14 @@ export function Card() {
                 </ResultImgBox>
               )}
 
-              {cardFace && (
+              {result.card_faces && (
                 <ResultImgBox className='cardFace'>
                   <ResultCardFace>
-                    {cardFace.map((data: CardFace, index: number) => (
+                    {result.card_faces.map((data: CardFace, index: number) => (
                       <ResultImg key={index} src={data.image_uris.art_crop} />
                     ))}
                   </ResultCardFace>
-                  <ResultCaption>Artista: <b>{cardFace[0].artist}</b></ResultCaption>
+                  <ResultCaption>Artista: <b>{result.card_faces[0].artist}</b></ResultCaption>
                 </ResultImgBox>
               )}
 
@@ -110,8 +105,8 @@ export function Card() {
                   }
 
                   {
-                    cardFace &&
-                    cardFace.map((data: CardFace, index: number) => (
+                    result.card_faces &&
+                    result.card_faces.map((data: CardFace, index: number) => (
                       <React.Fragment key={index}>
                         {
                           data.power ?
@@ -153,9 +148,9 @@ export function Card() {
                 </RuleText>
               )}
 
-              {cardFace && (
+              {result.card_faces && (
                 <RuleText>
-                  {cardFace.map((data: CardFace, index: number) => (
+                  {result.card_faces.map((data: CardFace, index: number) => (
                     <React.Fragment key={index}>
                       {
                         data.oracle_text
