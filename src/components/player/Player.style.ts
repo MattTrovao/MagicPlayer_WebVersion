@@ -4,6 +4,7 @@ import { shareTransition } from "../global/Global.styles";
 export const PlayerBox = styled.div`
   padding: 60px 0 20px;
   width: 100%;
+  height: 100%;
   background-color: ${props => props.theme.COLORS.PRIMARY};
   position: relative;
 

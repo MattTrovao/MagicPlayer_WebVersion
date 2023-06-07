@@ -45,6 +45,7 @@ export const HomeGrid = styled.section`
   &[data-players="total--5"]{
     display: flex;
     flex-wrap: wrap;
+    justify-content: center;
 
     .setPlayer{
       &[data-position="position--0"],
@@ -75,12 +76,12 @@ export const HomeGrid = styled.section`
 `
 
 export const HomePosition = styled.section`
-  display: inline-block;
+  min-height: calc(50vh - 55px);
 `
 
 export const HomeMenu = styled.nav`
   position: absolute;
-  top: 47.3%;
+  top: 47%;
   left: 0%;
   width: 100%;
   transform: translateY(-50%);
