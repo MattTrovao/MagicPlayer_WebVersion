@@ -24,6 +24,10 @@ export const MenuItens = styled.nav`
       }
     }
   }
+
+  @media screen and (max-width: 992px) {
+    width: 75%
+  }
 `
 export const Icon = styled.div`
   svg{
@@ -40,6 +44,12 @@ export const Icon = styled.div`
       path {
         fill: ${props => props.theme.COLORS.PRIMARY};
       }
+    }
+  }
+  @media screen and (max-width: 992px) {
+    svg{
+      width: 24px;
+      height: 24px;
     }
   }
 `

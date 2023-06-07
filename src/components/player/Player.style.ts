@@ -2,7 +2,6 @@ import styled from "styled-components";
 import { shareTransition } from "../global/Global.styles";
 
 export const PlayerBox = styled.div`
-  padding: 60px 0 0;
   width: 100%;
   height: 100%;
   background-color: ${props => props.theme.COLORS.PRIMARY};
@@ -27,13 +26,19 @@ export const PlayerBox = styled.div`
     right: 0;
     border-bottom-left-radius: 40px
   }
+
+  @media screen and (max-width: 992px) {
+    &::before,
+    &::after{
+      width: 10px;
+    }
+  }
 `
 
 export const PlayerFrame = styled.div`
   width: 100%;
   height: 60px;
-  position: absolute;
-  top: 0px;
+  position: relative;
   background-color: ${props => props.theme.COLORS.TERTIARY};
 `
 
@@ -89,13 +94,8 @@ export const PlayerInput = styled.input`
 
 export const Life = styled.div`
   position: relative;
-  width: 30%;
-  max-width: 500px;
   margin: 0 auto;
 
-  @media screen and (max-width: 992px) {
-    width: 20%;
-  }
 `
 
 export const LifeValue = styled.h2`

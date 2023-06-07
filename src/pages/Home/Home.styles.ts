@@ -6,9 +6,16 @@ export const PageHome = styled.main`
   height: calc( 100vh - 60px);
   overflow: hidden;
   @media screen and (max-width: 992px) {
-    transform: rotate(90deg);
-    width: calc(100vh - 70px);
-    height: 100vh;
+    &[data-players="total--5"],
+    &[data-players="total--6"]{
+      transform: rotate(90deg);
+      width: calc(100vh - 70px);
+
+      nav{
+        top: 50%;
+        background-color: ${props => props.theme.COLORS.BLACK};
+      }
+    }
   }
 `
 
@@ -71,6 +78,10 @@ export const HomeGrid = styled.section`
         flex-basis: calc(48% + 11px);
       }
     }
+
+    @media screen and (max-width: 992px) {
+      gap: 0;
+    }
   }
 
   &[data-players="total--6"]{
@@ -83,6 +94,14 @@ export const HomeGrid = styled.section`
         transform: rotate(180deg);
       }
     }
+
+    @media screen and (max-width: 992px) {
+      gap: 0;
+    }
+  }
+
+  @media screen and (max-width: 992px) {
+    gap: 4rem 0;
   }
 `
 
@@ -106,7 +125,7 @@ export const HomeMenu = styled.nav`
   }
 
   @media screen and (max-width: 992px) {
-    top: 47.5%;
+    top: 46.3%;
   }
 `
 

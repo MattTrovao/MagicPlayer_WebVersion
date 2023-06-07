@@ -45,7 +45,7 @@ export default function Home() {
   }
 
   return (
-    <PageHome>
+    <PageHome data-players={`total--${PlayersNum}`}>
       <HomeGrid data-players={`total--${PlayersNum}`}>
         {Array.from({ length: PlayersNum }, (_, index) => (
           <HomePosition

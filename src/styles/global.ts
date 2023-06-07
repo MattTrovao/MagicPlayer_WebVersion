@@ -129,13 +129,11 @@ export const GlobalCSS = createGlobalStyle`
       font-size: ${props => props.theme.NUMBER_SIZE.MD};
     }
 
-    .DialogContent__body{
-      z-index: 99999;
-    }
+    
 
     .DialogContent__btn{
       display: flex;
-      justify-content: space-between;
+      justify-content: end;
     }
   }
 
