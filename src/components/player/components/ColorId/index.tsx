@@ -1,15 +1,15 @@
-import { ColorInterface } from "../../../../@types/colors";
 import { IdBox, IdColor } from "./ColorId.style";
 
+interface ColorIdProps{
+  colors: string[]
+}
 
-export function ColorId({ colors }: ColorInterface){  
-  
+export function ColorId({colors}:ColorIdProps){      
   return(
     <IdBox>
-      {
-        colors.length > 0
-        ? colors?.map((color, index) => (
-            <IdColor key={index} className={color} />
+      {colors.length > 0
+        ? colors.map((colorList, index) => (
+            <IdColor key={index} className={colorList} />
           ))
         : <IdColor />
       }

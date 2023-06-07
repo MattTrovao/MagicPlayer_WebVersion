@@ -14,7 +14,7 @@ export const PageHome = styled.main`
 
 export const HomeGrid = styled.section`
   display: grid;
-  gap: 2rem;
+  gap: 4rem;
   height: 100%;
 
   &[data-players="total--2"]{

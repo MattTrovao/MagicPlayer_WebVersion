@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react"
-import { useForm } from "react-hook-form";
 
 
 import * as Dialog from '@radix-ui/react-dialog';
@@ -7,7 +6,7 @@ import '../../styles/global'
 
 import { ColorId } from "./components/ColorId/"
 import { Markers } from "./components/Markers"
-import { faFloppyDisk, faX } from "@fortawesome/free-solid-svg-icons";
+import { faX } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { CardSearch } from "../card/CardSearch";
 import { Label } from "../global/Label";
@@ -60,7 +59,6 @@ export function Player({ initialLife, resetLife }: { initialLife: number, resetL
 
 
   const [name, setName] = useState<string>('');
-  const [colorId, setColorId] = useState<string[] | null>([]);
 
   const [result, setResult] = useState<CardResult | null>(null)
 
@@ -81,14 +79,6 @@ export function Player({ initialLife, resetLife }: { initialLife: number, resetL
 
   function clearCards() {
     setResult(null)
-  }
-
-  const handleInputChange = (event: any) => {
-    setName(event.target.value);
-  };
-
-  function handleAddNewPlayer() {
-    setColorId(result?.color_identity ?? ['Colorless']);
   }
 
   return (
@@ -117,7 +107,7 @@ export function Player({ initialLife, resetLife }: { initialLife: number, resetL
                     placeholder="Nome"
                     id="CardInput"
                     value={name}
-                    onChange={handleInputChange}
+                    onChange={(e)=> setName(e.target.value)}
                   />
 
                   <CardSearch onFormSubmit={handleFormSubmit} location="Home" />
@@ -146,15 +136,6 @@ export function Player({ initialLife, resetLife }: { initialLife: number, resetL
 
                 <Dialog.Close asChild>
                   <div className="DialogContent__btn" >
-                    <button
-                      className="btn save"
-                      aria-label="Salvar"
-                      onClick={handleAddNewPlayer}
-                      disabled={!colorId && !name}
-                    >
-                      <FontAwesomeIcon icon={faFloppyDisk} />
-                      Salvar
-                    </button>
                     <button className="btn close" aria-label="Fechar">
                       <FontAwesomeIcon icon={faX} />
                       Fechar
@@ -165,7 +146,7 @@ export function Player({ initialLife, resetLife }: { initialLife: number, resetL
             </Dialog.Portal>
           </Dialog.Root>
 
-          {colorId && <ColorId colors={colorId} />}
+          {result?.color_identity && <ColorId colors={result.color_identity} />}
         </PlayerNameBox>
       </PlayerFrame>
 

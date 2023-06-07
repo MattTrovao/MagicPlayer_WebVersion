@@ -4,7 +4,6 @@ import { GlobalCSS } from './styles/global'
 import { BrowserRouter } from 'react-router-dom'
 import { Router } from './Router'
 import { Menu } from './components/menu/DefaultMenu'
-import { Page } from './components/global/Page'
 
 
 export default function App() {

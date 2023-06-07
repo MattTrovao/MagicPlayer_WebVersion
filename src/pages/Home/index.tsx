@@ -3,11 +3,10 @@ import { useState } from 'react'
 import { Player } from '../../components/player'
 
 import { HomeGrid, HomeMenu, HomeMenuIcon, HomePosition, PageHome, PlayersBtns, TotalPlayers } from './Home.styles'
-import { faArrowsRotate, faFloppyDisk, faUserGroup, faX } from '@fortawesome/free-solid-svg-icons'
+import { faArrowsRotate, faUserGroup, faX } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 import * as Dialog from '@radix-ui/react-dialog';
-import { PlayerName } from '../../components/player/Player.style'
 import { Label } from '../../components/global/Label'
 
 

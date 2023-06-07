@@ -54,7 +54,7 @@ export function Card() {
           <Container>
             <ResultBox>
               <NameContainer>
-                <h2>{result.name}</h2>
+                {result && <h2>{result.name}</h2>}
 
                 {result?.mana_cost && (
                   <h2>{result.mana_cost.replace(/{/g, "").replace(/}/g, " ")}</h2>
@@ -79,7 +79,7 @@ export function Card() {
                 </ResultImgBox>
               )}
 
-              {result.card_faces && (
+              {result?.card_faces && result.card_faces && (
                 <ResultImgBox className='cardFace'>
                   <ResultCardFace>
                     {result.card_faces.map((data: CardFace, index: number) => (
@@ -105,7 +105,7 @@ export function Card() {
                   }
 
                   {
-                    result.card_faces &&
+                    result?.card_faces && result.card_faces &&
                     result.card_faces.map((data: CardFace, index: number) => (
                       <React.Fragment key={index}>
                         {
@@ -148,7 +148,7 @@ export function Card() {
                 </RuleText>
               )}
 
-              {result.card_faces && (
+              {result?.card_faces && result.card_faces && (
                 <RuleText>
                   {result.card_faces.map((data: CardFace, index: number) => (
                     <React.Fragment key={index}>

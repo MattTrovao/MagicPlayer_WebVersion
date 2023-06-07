@@ -14,9 +14,7 @@ export interface CardResult {
   mana_cost: string,
   cmc: number,
   type_line: string,
-  color_identity: {
-    colors: string,
-  },
+  color_identity: [],
   rulings_uri: URL,
   power: number,
   toughness: number,
@@ -24,6 +22,7 @@ export interface CardResult {
   oracle_text: string,
   card_faces: [CardFace],
 }
+
 
 export interface CardFace {
   artist: string,
