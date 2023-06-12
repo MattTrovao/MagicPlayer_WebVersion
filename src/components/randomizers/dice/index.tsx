@@ -9,11 +9,18 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 import { DiceContent, DiceImg, DiceValue } from './Dice.styles';
 
+import D20 from '../../../assets/Dices/Shape_D20.svg'
+import D12 from '../../../assets/Dices/Shape_D12.svg'
+import D10 from '../../../assets/Dices/Shape_D10.svg'
+import D8 from '../../../assets/Dices/Shape_D8.svg'
+import D6 from '../../../assets/Dices/Shape_D6.svg'
+import D4 from '../../../assets/Dices/Shape_D4.svg'
+
 
 export function Dice() {
   const [diceNumber, SetDiceNumber] = useState<number>(0)
   const [diceMax, SetDiceMax] = useState<number>(20)
-  const [dicePath, SetDicePath] = useState<string>('../../../src/assets/Dices/Shape_D20.svg')
+  const [dicePath, SetDicePath] = useState<string>(D20)
   const [isDisabled, setDisabled] = useState<boolean>(false)
 
 
@@ -21,7 +28,26 @@ export function Dice() {
     SetDiceNumber(0)
     SetDiceMax(e)
 
-    SetDicePath(`../../../src/assets/Dices/Shape_D${e}.svg`)
+    switch(e) {
+      case '12':
+        SetDicePath(D12)
+        break;
+      case '10':
+        SetDicePath(D10)
+        break;
+      case '8':
+        SetDicePath(D8)
+        break;
+      case '6':
+        SetDicePath(D6)
+        break;
+      case '4':
+        SetDicePath(D4)
+        break;
+      default: 
+        SetDicePath(D20)
+        break;
+    }
   }
 
   function handleNewDiceValue() {

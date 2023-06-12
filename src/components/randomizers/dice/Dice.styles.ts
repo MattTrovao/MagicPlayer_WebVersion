@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { ReactSVG } from "react-svg";
 import { shareTransition } from "../../global/Global.styles";
 import { randomizerAnimation } from "../Randomizers.styles";
 
@@ -14,8 +15,7 @@ export const DiceContent = styled.div`
   margin: 0 auto;
 `
 
-//export const DiceImg = styled(ReactSVG)`
-export const DiceImg = styled.img`
+export const DiceImg = styled(ReactSVG)`
   width: 100%;
   height: 100%;
   position: relative;
