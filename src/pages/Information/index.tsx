@@ -25,6 +25,10 @@ export default function Information() {
           <InformationText>
             A aplicação foi desenvolvida para utilização de jogadores de Magic The Gathering, não solicitando informações de pagamento ou dados dos usuários que a acessem.
           </InformationText>
+
+          <InformationText>
+            Aplicação desenvolvida por <a href="https://github.com/MattTrovao/" target="_blank" rel="noopener noreferrer">Matheus Trovão Consentino</a>
+          </InformationText>
         </InformationList>
 
         <InformationTitle>
@@ -64,6 +68,21 @@ export default function Information() {
             <a href="https://www.radix-ui.com/docs/primitives/components/tabs" target="_blank">
               Radix Tabs
             </a> v1.0.3
+          </InformationText>
+          <InformationText>
+            <a href="https://www.react-hook-form.com/" target="_blank">
+              React Hook Forms
+            </a> v7.43.9
+          </InformationText>
+          <InformationText>
+            <a href="https://reactrouter.com/" target="_blank">
+              React Router
+            </a> v6.11.2
+          </InformationText>
+          <InformationText>
+            <a href="https://zod.dev/" target="_blank">
+              Zod
+            </a> v3.21.4
           </InformationText>
         </InformationList>
       </Container>
