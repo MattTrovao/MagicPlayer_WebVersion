@@ -33,6 +33,7 @@ export const GlobalContainer = styled.section`
   width: 90%;
   margin: 0 auto;
   overflow: auto;
+  height: 100%;
   max-height: calc(100vh - 80px);
 
   &::-webkit-scrollbar {

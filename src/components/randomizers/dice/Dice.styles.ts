@@ -15,7 +15,8 @@ export const DiceContent = styled.div`
   margin: 0 auto;
 `
 
-export const DiceImg = styled(ReactSVG)`
+//export const DiceImg = styled(ReactSVG)`
+export const DiceImg = styled.img`
   width: 100%;
   height: 100%;
   position: relative;
