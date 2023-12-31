@@ -4,7 +4,7 @@ Aplicativo desenvolvido para jogadores de Magic The Gathering, que ajuda a contr
 
 [Versão Web](https://magicplayer-web.vercel.app/)
 
-## Etapas
+## Etapas de Desenvolvimento
 
 1. Criação de um fluxograma para entender a funcionalidade do aplicativo e suas principais características.
 
