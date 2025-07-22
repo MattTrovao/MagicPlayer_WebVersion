@@ -12,6 +12,22 @@ const router = createRouter({
         title: "page.game",
       },
     },
+    {
+      path: '/dice',
+      name: 'Dados',
+      component: () => import('@/views/dice/diceView.vue'),
+      meta: {
+        title: "page.dice",
+      },
+    },
+    {
+      path: '/search',
+      name: 'Busca',
+      component: () => import('@/views/search/searchView.vue'),
+      meta: {
+        title: "page.search",
+      },
+    },
   ],
   scrollBehavior() {
     return { top: 0 };

@@ -1,6 +1,8 @@
 {
   "page": {
-    "game": "Game"
+    "game": "Game",
+    "search": "Card Search",
+    "dice": "Dice"
   },
   "general": {
     "welcome": "Welcome"
