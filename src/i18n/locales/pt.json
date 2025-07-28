@@ -6,5 +6,21 @@
   },
   "general": {
     "welcome": "Bem Vindo"
+  },
+  "swal": {
+    "erro": "Erro!",
+    "attention": "Atenção",
+    "success": "Sucesso!",
+    "maxPlayer": "Número máximo de jogadores adicionado.",
+    "minPlayer": "Número mínimo de jogadores alcançado.",
+    "button": {
+      "cancel": "Cancelar",
+      "confirm": "Confirmar"
+    }
+  },
+  "alt": {
+    "life": "Setar a vida máxima",
+    "player": "Setar o total de jogadores",
+    "start": "Iniciar Jogo"
   }
 }
